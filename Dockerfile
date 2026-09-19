@@ -1,38 +1,26 @@
-# Multi-stage Dockerfile for Digital Identity Workshop (Dokploy & VPS compatible)
-FROM node:20-alpine AS builder
-
-WORKDIR /app
-
-# Install dependencies
-COPY web-app/package*.json ./
-RUN npm ci
-
-# Copy source files and build
-COPY web-app/ ./
-RUN npm run build
-
-# Production runner stage
-FROM node:20-alpine AS runner
+# Production Dockerfile for Digital Identity Workshop (Dokploy & VPS compatible)
+FROM node:20-slim
 
 WORKDIR /app
 
 ENV NODE_ENV=production
 ENV PORT=3001
 
+# Copy package descriptors and install only runtime production dependencies
 COPY web-app/package*.json ./
-RUN npm ci --only=production
+RUN npm install --omit=dev --no-audit --no-fund
 
-COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/server.js ./server.js
-COPY --from=builder /app/.env.example ./.env.example
+# Copy prebuilt frontend assets and backend server
+COPY web-app/dist ./dist
+COPY web-app/server.js ./server.js
+COPY web-app/.env.example ./.env.example
 
 # Create persistent storage directory
 RUN mkdir -p /app/data
-
-# Declare volume for permanent storage
 VOLUME ["/app/data"]
 
 EXPOSE 3001
 
 CMD ["node", "server.js"]
+
 

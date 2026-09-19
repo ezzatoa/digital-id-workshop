@@ -1,6 +1,5 @@
-# Node dependencies & builds
+# Node dependencies
 node_modules/
-dist/
 .output/
 .parcel-cache/
 
