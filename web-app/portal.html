@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>بوابة ورش العمل الأكاديمية | جامعة طيبة</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            cairo: ['Cairo', 'sans-serif'],
+            tajawal: ['Tajawal', 'sans-serif']
+          },
+          colors: {
+            taibah: {
+              navy: '#0b1a48',
+              mediumNavy: '#122a6b',
+              emerald: '#00a887',
+              cyan: '#00c4d8',
+              gold: '#d97706',
+              slate: '#f8fafc'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+    }
+    .hero-pattern {
+      background-color: #0b1a48;
+      background-image: radial-gradient(#00a887 0.75px, transparent 0.75px), radial-gradient(#00c4d8 0.75px, #0b1a48 0.75px);
+      background-size: 30px 30px;
+      background-position: 0 0, 15px 15px;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col justify-between">
+
+  <!-- Header & Hero Section -->
+  <header class="hero-pattern text-white shadow-xl relative overflow-hidden border-b-4 border-taibah-emerald">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12 relative z-10">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        
+        <!-- Institution Branding -->
+        <div class="flex items-center gap-4 text-right">
+          <div class="w-16 h-16 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-3xl shadow-inner">
+            🎓
+          </div>
+          <div>
+            <div class="text-taibah-cyan text-sm font-semibold tracking-wide">جامعة طيبة • كلية العلوم الطبية التطبيقية</div>
+            <h1 class="text-2xl sm:text-3xl font-black font-tajawal mt-1 text-white">بوابة ورش العمل الأكاديمية والتدريبية</h1>
+            <p class="text-slate-300 text-xs sm:text-sm mt-0.5">قسم تقنية الأشعة — المنصة التفاعلية المعتمدة للبرامج التدريبية</p>
+          </div>
+        </div>
+
+        <!-- Instructor Credential Badge -->
+        <div class="bg-white/10 backdrop-blur-md border border-white/15 rounded-xl px-5 py-3 text-right">
+          <div class="text-xs text-taibah-cyan font-medium">إشراف وتقديم:</div>
+          <div class="text-sm font-bold text-white">د. عزت عمر عبدالله أبوعزه</div>
+          <div class="text-xs text-slate-300">أستاذ مساعد في قسم تقنية الأشعة</div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content: Available Workshops -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-12 flex-1 w-full">
+    
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 border-b border-slate-200 pb-4">
+      <div>
+        <h2 class="text-2xl font-bold font-tajawal text-taibah-navy flex items-center gap-2">
+          <span>📚</span> ورش العمل المتاحة للتدريب (Available Workshops)
+        </h2>
+        <p class="text-sm text-slate-600 mt-1">اختر الورشة التدريبية للانتقال مباشرة إلى المنظومة التفاعلية ومختبر الذكاء الاصطناعي</p>
+      </div>
+      <div class="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200 text-emerald-700 px-3 py-1.5 rounded-full text-xs font-semibold">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+        ورشة نشطة حالياً (1 متاحة)
+      </div>
+    </div>
+
+    <!-- Workshop Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      
+      <!-- Workshop 1: Digital Identity (Active) -->
+      <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-slate-200 overflow-hidden flex flex-col justify-between group">
+        <div>
+          <!-- Card Header Banner -->
+          <div class="bg-gradient-to-l from-taibah-navy to-taibah-mediumNavy text-white p-6 relative">
+            <div class="flex items-start justify-between gap-3">
+              <span class="bg-taibah-emerald/90 text-white text-xs font-bold px-3 py-1 rounded-full shadow-sm">
+                متاح الآن • Active
+              </span>
+              <span class="text-slate-300 text-xs bg-white/10 px-2.5 py-1 rounded-md">90 دقيقة تفاعلية</span>
+            </div>
+            <h3 class="text-xl font-bold font-tajawal text-white mt-4 leading-tight group-hover:text-taibah-cyan transition-colors">
+              الهوية الرقمية الأكاديمية والحضور البحثي العالمي
+            </h3>
+            <div class="text-slate-300 text-xs mt-1 font-mono">
+              Academic Digital Identity & Global Research Presence
+            </div>
+          </div>
+
+          <!-- Card Body -->
+          <div class="p-6 space-y-4">
+            <p class="text-sm text-slate-600 leading-relaxed text-justify">
+              ورشة تدريبية تطبيقية متكاملة مصممة لأعضاء هيئة التدريس والباحثين لبناء حضور رقمي أكاديمي رصين وموثق، ومحاكاة منصات النشر العلمي العالمية، واستثمار الذكاء الاصطناعي المنضبط لتعظيم استشهادات الأبحاث.
+            </p>
+
+            <!-- Feature Tags -->
+            <div class="grid grid-cols-2 gap-2 text-xs text-slate-700 pt-2 border-t border-slate-100">
+              <div class="flex items-center gap-1.5 bg-slate-50 p-2 rounded-lg border border-slate-100">
+                <span>🤖</span> <span>مختبر Gemini Flash المنضبط</span>
+              </div>
+              <div class="flex items-center gap-1.5 bg-slate-50 p-2 rounded-lg border border-slate-100">
+                <span>🔬</span> <span>محاكاة ORCID و Scholar</span>
+              </div>
+              <div class="flex items-center gap-1.5 bg-slate-50 p-2 rounded-lg border border-slate-100">
+                <span>📈</span> <span>حاسبة معامل هيرش h-index</span>
+              </div>
+              <div class="flex items-center gap-1.5 bg-slate-50 p-2 rounded-lg border border-slate-100">
+                <span>📜</span> <span>خطة عمل وشهادة إنجاز</span>
+              </div>
+            </div>
+
+            <!-- Presenter Info Box -->
+            <div class="bg-slate-50 rounded-xl p-3 border border-slate-200/80 flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-taibah-navy text-white flex items-center justify-center font-bold text-sm">
+                ع
+              </div>
+              <div>
+                <div class="text-xs font-bold text-slate-900">د. عزت عمر عبدالله أبوعزه</div>
+                <div class="text-[11px] text-slate-500">أستاذ مساعد بقسم تقنية الأشعة - جامعة طيبة</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Button -->
+        <div class="p-6 pt-0">
+          <a href="/digital-id-workshop" 
+             class="w-full bg-taibah-emerald hover:bg-emerald-600 text-white font-bold py-3.5 px-6 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-emerald-700/20 hover:shadow-xl transition-all transform hover:-translate-y-0.5">
+            <span>دخول الورشة التفاعلية</span>
+            <svg class="w-5 h-5 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Workshop 2: Coming Soon Card -->
+      <div class="bg-slate-100/70 rounded-2xl border-2 border-dashed border-slate-300 p-6 flex flex-col justify-between items-center text-center">
+        <div class="my-auto py-8">
+          <div class="w-16 h-16 mx-auto rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-3xl shadow-sm text-slate-400 mb-4">
+            ⏳
+          </div>
+          <span class="inline-block bg-slate-200 text-slate-700 text-xs font-bold px-3 py-1 rounded-full mb-2">
+            قريباً • Coming Soon
+          </span>
+          <h3 class="text-lg font-bold font-tajawal text-slate-800 mt-2">
+            برامج وورش تدريبية تخصصية إضافية
+          </h3>
+          <p class="text-xs text-slate-500 max-w-sm mx-auto mt-2 leading-relaxed">
+            يجري العمل على إعداد برامج تدريبية قادمة لأعضاء هيئة التدريس والباحثين في مجالات الذكاء الاصطناعي الطبي، ومنهجيات البحث المتقدمة، والنشر في مجلات الربع الأول (Q1).
+          </p>
+        </div>
+
+        <button disabled class="w-full bg-slate-200 text-slate-400 font-semibold py-3 px-6 rounded-xl cursor-not-allowed text-xs">
+          سيتم الإعلان عن الموعد لاحقاً
+        </button>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 border-t border-slate-800 py-6 text-center text-xs">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div>
+        جامعة طيبة — كلية العلوم الطبية التطبيقية — قسم تقنية الأشعة
+      </div>
+      <div>
+        إعداد وتطوير: <span class="text-slate-200 font-semibold">د. عزت عمر عبدالله أبوعزه</span> © 1448هـ / 2026م
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

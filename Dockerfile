@@ -13,6 +13,7 @@ RUN npm install --omit=dev --no-audit --no-fund
 # Copy prebuilt frontend assets and backend server
 COPY web-app/dist ./dist
 COPY web-app/server.js ./server.js
+COPY web-app/portal.html ./portal.html
 COPY web-app/.env.example ./.env.example
 
 # Create persistent storage directory

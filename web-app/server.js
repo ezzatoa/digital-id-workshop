@@ -390,22 +390,32 @@ apiRouter.get('/stats', (req, res) => {
 app.use('/api', apiRouter);
 app.use('/digital-id-workshop/api', apiRouter);
 
-// Serve static frontend assets in production
+// Serve static frontend assets for Digital Identity Workshop
 const distPath = path.join(__dirname, 'dist');
-app.use(express.static(distPath));
-app.use('/digital-id-workshop', express.static(distPath));
+const portalPath = path.join(__dirname, 'portal.html');
 
-// Redirect /digital-id-workshop (without slash) to trailing slash
-app.get('/digital-id-workshop', (req, res) => {
+app.use('/digital-id-workshop', express.static(distPath, { index: false }));
+
+// Digital Identity Workshop SPA routes (excluding API calls)
+app.get(['/digital-id-workshop', '/digital-id-workshop/*'], (req, res, next) => {
+  if (req.path.startsWith('/digital-id-workshop/api')) {
+    return next();
+  }
   res.sendFile(path.join(distPath, 'index.html'));
 });
 
-app.get('/digital-id-workshop/*', (req, res) => {
-  res.sendFile(path.join(distPath, 'index.html'));
+// Host Domain Root Route: Portal listing available workshops
+app.get(['/', '/index.html', '/workshops'], (req, res) => {
+  if (fs.existsSync(portalPath)) {
+    res.sendFile(portalPath);
+  } else {
+    res.sendFile(path.join(distPath, 'index.html'));
+  }
 });
 
+// Fallback: Redirect anything else to the workshops portal
 app.get('*', (req, res) => {
-  res.sendFile(path.join(distPath, 'index.html'));
+  res.redirect('/');
 });
 
 app.listen(PORT, '0.0.0.0', () => {
