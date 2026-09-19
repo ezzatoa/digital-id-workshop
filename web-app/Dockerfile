@@ -23,6 +23,13 @@ COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/server.js ./server.js
 COPY --from=builder /app/.env.example ./.env.example
 
+# Create persistent storage directory
+RUN mkdir -p /app/data
+
+# Declare volume for permanent storage
+VOLUME ["/app/data"]
+
 EXPOSE 3001
 
 CMD ["node", "server.js"]
+

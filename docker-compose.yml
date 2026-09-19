@@ -12,5 +12,13 @@ services:
     environment:
       - PORT=3001
       - NODE_ENV=production
+      - DATA_DIR=/app/data
       - GEMINI_API_KEY=${GEMINI_API_KEY}
       - GEMINI_MODEL=${GEMINI_MODEL:-gemini-3.8-flash}
+    volumes:
+      - workshop_data:/app/data
+
+volumes:
+  workshop_data:
+    name: workshop_data
+

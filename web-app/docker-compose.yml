@@ -9,7 +9,16 @@ services:
       - "3001:3001"
     environment:
       - PORT=3001
+      - NODE_ENV=production
+      - DATA_DIR=/app/data
       - GEMINI_API_KEY=${GEMINI_API_KEY}
       - GEMINI_MODEL=${GEMINI_MODEL:-gemini-3.8-flash}
+    volumes:
+      - workshop_data:/app/data
     env_file:
       - .env
+
+volumes:
+  workshop_data:
+    name: workshop_data
+

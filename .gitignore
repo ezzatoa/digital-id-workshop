@@ -4,6 +4,10 @@ dist/
 .output/
 .parcel-cache/
 
+# Persistent Runtime Data
+data/
+web-app/data/
+
 # Environment and secrets
 .env
 .env.local

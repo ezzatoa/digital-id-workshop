@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import path from 'path';
+import fs from 'fs';
 import { fileURLToPath } from 'url';
 import { GoogleGenAI } from '@google/genai';
 
@@ -12,6 +13,47 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+
+// Persistent Storage Directory (Mountable via Docker Volume)
+const DATA_DIR = process.env.DATA_DIR || path.join(__dirname, 'data');
+try {
+  if (!fs.existsSync(DATA_DIR)) {
+    fs.mkdirSync(DATA_DIR, { recursive: true });
+  }
+} catch (err) {
+  console.warn('Persistent storage directory warning:', err.message);
+}
+
+// Activity and Metrics Recording Helper
+function recordWorkshopActivity(event, meta = {}) {
+  try {
+    const timestamp = new Date().toISOString();
+    const logEntry = JSON.stringify({ timestamp, event, ...meta }) + '\n';
+    const logFile = path.join(DATA_DIR, 'activity.log');
+    fs.appendFileSync(logFile, logEntry, 'utf8');
+
+    // Update aggregated stats
+    const statsFile = path.join(DATA_DIR, 'stats.json');
+    let stats = { totalGenerations: 0, templates: {}, lastActive: timestamp };
+    if (fs.existsSync(statsFile)) {
+      try {
+        stats = JSON.parse(fs.readFileSync(statsFile, 'utf8'));
+      } catch (e) {
+        // fallback to fresh stats
+      }
+    }
+    if (event === 'prompt_generation') {
+      stats.totalGenerations = (stats.totalGenerations || 0) + 1;
+      const tId = meta.templateId || 'unknown';
+      stats.templates[tId] = (stats.templates[tId] || 0) + 1;
+    }
+    stats.lastActive = timestamp;
+    fs.writeFileSync(statsFile, JSON.stringify(stats, null, 2), 'utf8');
+  } catch (err) {
+    // Non-blocking: Logging failure should never interrupt workshop experience
+    console.warn('Logging error:', err.message);
+  }
+}
 
 app.use(cors());
 app.use(express.json({ limit: '1mb' }));
@@ -276,6 +318,12 @@ app.post('/api/gemini/generate', async (req, res) => {
 
     const generatedText = response.text || 'لم يتم استلام مخرجات من النموذج.';
 
+    recordWorkshopActivity('prompt_generation', {
+      templateId,
+      model: modelName,
+      isMock: false
+    });
+
     return res.json({
       success: true,
       isMock: false,
@@ -285,6 +333,13 @@ app.post('/api/gemini/generate', async (req, res) => {
   } catch (err) {
     console.error('Gemini API Error, falling back to smart simulation:', err.message);
     const mockOutput = template.mockFallback(safeInputs);
+
+    recordWorkshopActivity('prompt_generation', {
+      templateId,
+      model: `${modelName}-mock`,
+      isMock: true
+    });
+
     return res.json({
       success: true,
       isMock: true,
@@ -302,8 +357,30 @@ app.get('/api/health', (req, res) => {
     status: 'online',
     timestamp: new Date().toISOString(),
     apiKeyConfigured: !!(process.env.GEMINI_API_KEY && process.env.GEMINI_API_KEY.trim() !== 'YOUR_GEMINI_API_KEY_HERE'),
-    model: process.env.GEMINI_MODEL || 'gemini-3.8-flash'
+    model: process.env.GEMINI_MODEL || 'gemini-3.8-flash',
+    persistentStorage: {
+      dataDir: DATA_DIR,
+      isMounted: fs.existsSync(DATA_DIR)
+    }
   });
+});
+
+// Workshop Live Analytics & Stats (Stored in Persistent Volume)
+app.get('/api/stats', (req, res) => {
+  try {
+    const statsFile = path.join(DATA_DIR, 'stats.json');
+    let stats = { totalGenerations: 0, templates: {}, lastActive: null };
+    if (fs.existsSync(statsFile)) {
+      stats = JSON.parse(fs.readFileSync(statsFile, 'utf8'));
+    }
+    res.json({
+      success: true,
+      storagePath: DATA_DIR,
+      stats
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
 });
 
 // Serve static frontend assets in production
