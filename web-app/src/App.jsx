@@ -8,6 +8,7 @@ import PostWorkshopGuides from './components/PostWorkshopGuides';
 import ActionPlanExport from './components/ActionPlanExport';
 import SettingsModal from './components/SettingsModal';
 import { PRESENTER_INFO, WORKSHOP_MODULES } from './data/initialData';
+import { getApiUrl } from './utils/api';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('maturity');
@@ -36,7 +37,7 @@ export default function App() {
 
   // Check server health on mount
   useEffect(() => {
-    fetch('/api/health')
+    fetch(getApiUrl('/api/health'))
       .then(res => res.json())
       .then(data => {
         if (data.status === 'online') {

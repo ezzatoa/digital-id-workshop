@@ -260,8 +260,11 @@ ORCID: 0000-xxxx-xxxx-xxxx | Institutional Profile: taibahu.edu.sa
   }
 };
 
+// API Router (Mounted on both /api and /digital-id-workshop/api)
+const apiRouter = express.Router();
+
 // API: List Available Prompt Templates
-app.get('/api/gemini/templates', (req, res) => {
+apiRouter.get('/gemini/templates', (req, res) => {
   const list = Object.values(PROMPT_TEMPLATES).map(t => ({
     id: t.id,
     title: t.title
@@ -270,7 +273,7 @@ app.get('/api/gemini/templates', (req, res) => {
 });
 
 // API: Generate AI Output using Gemini Flash (Strictly Controlled Prompt)
-app.post('/api/gemini/generate', async (req, res) => {
+apiRouter.post('/gemini/generate', async (req, res) => {
   const { templateId, inputs, userApiKey, requestedModel } = req.body;
 
   if (!templateId || !PROMPT_TEMPLATES[templateId]) {
@@ -352,7 +355,7 @@ app.post('/api/gemini/generate', async (req, res) => {
 });
 
 // Health check endpoint
-app.get('/api/health', (req, res) => {
+apiRouter.get('/health', (req, res) => {
   res.json({
     status: 'online',
     timestamp: new Date().toISOString(),
@@ -366,7 +369,7 @@ app.get('/api/health', (req, res) => {
 });
 
 // Workshop Live Analytics & Stats (Stored in Persistent Volume)
-app.get('/api/stats', (req, res) => {
+apiRouter.get('/stats', (req, res) => {
   try {
     const statsFile = path.join(DATA_DIR, 'stats.json');
     let stats = { totalGenerations: 0, templates: {}, lastActive: null };
@@ -383,9 +386,23 @@ app.get('/api/stats', (req, res) => {
   }
 });
 
+// Mount API router on both /api and /digital-id-workshop/api
+app.use('/api', apiRouter);
+app.use('/digital-id-workshop/api', apiRouter);
+
 // Serve static frontend assets in production
 const distPath = path.join(__dirname, 'dist');
 app.use(express.static(distPath));
+app.use('/digital-id-workshop', express.static(distPath));
+
+// Redirect /digital-id-workshop (without slash) to trailing slash
+app.get('/digital-id-workshop', (req, res) => {
+  res.sendFile(path.join(distPath, 'index.html'));
+});
+
+app.get('/digital-id-workshop/*', (req, res) => {
+  res.sendFile(path.join(distPath, 'index.html'));
+});
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(distPath, 'index.html'));

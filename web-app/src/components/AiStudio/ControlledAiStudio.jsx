@@ -4,6 +4,7 @@ import {
   HelpCircle, RefreshCw, FileText, Lock, Globe, Share2, Calendar, Search 
 } from 'lucide-react';
 import { AI_PROMPT_TEMPLATES_CONFIG } from '../../data/initialData';
+import { getApiUrl } from '../../utils/api';
 
 export default function ControlledAiStudio({ isTrainerMode, onSaveToPlan, apiStatus }) {
   const [selectedTemplateId, setSelectedTemplateId] = useState('seo_title_keywords');
@@ -41,7 +42,7 @@ export default function ControlledAiStudio({ isTrainerMode, onSaveToPlan, apiSta
     setSavedToPlanNotice(false);
 
     try {
-      const response = await fetch('/api/gemini/generate', {
+      const response = await fetch(getApiUrl('/api/gemini/generate'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
