@@ -7,7 +7,7 @@ export default function ScopusSimulation({ onCompleteBadge, isCompleted, isTrain
 
   const [step, setStep] = useState(1); // 1: search/select, 2: choose name & affiliation, 3: review & merged
   const [selectedProfiles, setSelectedProfiles] = useState(['p1', 'p2']);
-  const [preferredName, setPreferredName] = useState('Aboazza, Ezzat Omar Abdullah');
+  const [preferredName, setPreferredName] = useState('Al-Ghamdi, Tariq Mohammed');
   const [primaryAffiliation, setPrimaryAffiliation] = useState('Taibah University, Medina, Saudi Arabia');
   const [orcidSynced, setOrcidSynced] = useState(false);
   const [savedSuccess, setSavedSuccess] = useState(false);
@@ -15,21 +15,21 @@ export default function ScopusSimulation({ onCompleteBadge, isCompleted, isTrain
   const initialProfiles = [
     {
       id: 'p1',
-      name: 'Aboazza, Ezzat O.',
+      name: 'Al-Ghamdi, Tariq M.',
       authorId: '57219084122',
-      affiliation: 'Taibah University, Department of Radiologic Technology',
-      docs: 4,
-      citations: 38,
-      hIndex: 3
+      affiliation: 'Taibah University, College of Computer Science & Engineering',
+      docs: 24,
+      citations: 2150,
+      hIndex: 22
     },
     {
       id: 'p2',
-      name: 'Abu Azza, E. M.',
+      name: 'Ghamdi, T. M.',
       authorId: '57849102943',
-      affiliation: 'Taibah University, College of Applied Medical Sciences',
-      docs: 3,
-      citations: 24,
-      hIndex: 2
+      affiliation: 'Taibah University, Department of Information Systems',
+      docs: 12,
+      citations: 1300,
+      hIndex: 14
     }
   ];
 
@@ -93,8 +93,8 @@ export default function ScopusSimulation({ onCompleteBadge, isCompleted, isTrain
 
       {isTrainerMode && (
         <div className="bg-amber-50 border border-amber-300 rounded-xl p-3 text-xs text-amber-900">
-          <span className="font-bold">🎯 توجيه المحاضر للشريحة رقم 18:</span>
-          أوضح للمتدربين كيف أن اختلاف بسيط في كتابة الاسم (Aboazza مقابل Abu Azza) أدى إلى خلق حسابين في Scopus وتشتت الـ h-index بين (3) و (2)، وأرهم كيف يقفز الـ h-index الموحد إلى (4) فور الدمج!
+          <span className="font-bold">🎯 توجيه المدرب للشريحة رقم 18:</span>
+          أوضح للمتدربين كيف أن اختلافاً بسيطاً في كتابة الاسم (Al-Ghamdi مقابل Ghamdi) أدى إلى خلق حسابين منفصلين في Scopus وتشتت الـ h-index بين (22) و (14)، وأرهم كيف يقفز الـ h-index الموحد إلى (28) فور الدمج وربطه بـ ORCID!
         </div>
       )}
 

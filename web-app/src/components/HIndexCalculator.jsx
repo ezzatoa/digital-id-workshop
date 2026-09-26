@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { BarChart3, TrendingUp, Sparkles, HelpCircle, ArrowUpRight, Plus, Trash2, Award } from 'lucide-react';
-import { DEFAULT_PAPERS } from '../data/initialData';
+import { BarChart3, TrendingUp, Sparkles, HelpCircle, ArrowUpRight, Plus, Trash2, Award, Users } from 'lucide-react';
+import { DEFAULT_PAPERS, SCHOLAR_AUTHOR_EXAMPLES } from '../data/initialData';
 
 export default function HIndexCalculator({ isTrainerMode }) {
   const [papers, setPapers] = useState(DEFAULT_PAPERS);
@@ -94,9 +94,35 @@ export default function HIndexCalculator({ isTrainerMode }) {
         </div>
       </div>
 
+      {/* Author Case Studies Quick Load Bar */}
+      <div className="bg-slate-100 p-3 rounded-2xl border border-slate-200 flex flex-wrap items-center justify-between gap-3 text-xs">
+        <span className="font-bold text-slate-700 flex items-center gap-1.5">
+          <Users className="w-4 h-4 text-taibah-navy" />
+          تحميل بيانات نماذج الباحثين للتجربة (Google Scholar Case Studies):
+        </span>
+        <div className="flex items-center gap-2 flex-wrap">
+          <button
+            type="button"
+            onClick={() => setPapers(SCHOLAR_AUTHOR_EXAMPLES.high.calculatorPapers)}
+            className="px-3 py-1.5 rounded-xl bg-white hover:bg-emerald-50 border border-slate-300 hover:border-emerald-500 font-bold text-slate-800 transition flex items-center gap-1.5 shadow-sm cursor-pointer"
+          >
+            <span>🌟</span>
+            <span>أ.د. طارق الغامدي (h: 28 • استشهادات عالية)</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => setPapers(SCHOLAR_AUTHOR_EXAMPLES.low.calculatorPapers)}
+            className="px-3 py-1.5 rounded-xl bg-white hover:bg-blue-50 border border-slate-300 hover:border-blue-500 font-bold text-slate-800 transition flex items-center gap-1.5 shadow-sm cursor-pointer"
+          >
+            <span>🚀</span>
+            <span>د. فهد الحربي (h: 3 • مرحلة التأسيس)</span>
+          </button>
+        </div>
+      </div>
+
       {isTrainerMode && (
         <div className="bg-amber-50 border border-amber-300 rounded-xl p-3.5 text-xs text-amber-950">
-          <span className="font-bold">🎯 توجيه المحاضر للشريحة رقم 21 و 26:</span>
+          <span className="font-bold">🎯 توجيه المدرب للشريحة رقم 21 و 26:</span>
           دع المتدربين يجربون زيادة الورقة الأولى إلى 100 استشهاد ليشهدوا بأنفسهم أن h-index لا يتغير أبداً (ظاهرة الهضبة Plateau)، ثم اطلب منهم زيادة استشهادات الورقة الذهبية المميزة باللون الأخضر ليروا كيف يقفز المعامل فوراً بدرجة كاملة!
         </div>
       )}

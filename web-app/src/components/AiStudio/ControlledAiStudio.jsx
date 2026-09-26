@@ -331,7 +331,7 @@ export default function ControlledAiStudio({ isTrainerMode, onSaveToPlan, apiSta
 
           <div className="text-[11px] text-slate-400 flex items-center justify-between border-t border-slate-100 pt-3">
             <span>مدعوم بواسطة Google AI Studio - Gemini Flash</span>
-            <span>بإشراف: د. عزت عمر عبدالله أبوعزه</span>
+            <span>إعداد وإشراف: د. عزت عمر عبدالله أبوعزه (جامعة طيبة)</span>
           </div>
         </div>
       </div>

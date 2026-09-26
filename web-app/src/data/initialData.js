@@ -1,10 +1,10 @@
 // initialData.js - Workshop master data, simulations state, and guides
-// Presenter: Dr. Ezzat Omar Abdullah Aboazza - Taibah University
+// Institutional Training Program - Taibah University
 
 export const PRESENTER_INFO = {
   name: 'د. عزت عمر عبدالله أبوعزه',
   title: 'أستاذ مساعد في قسم تقنية الأشعة',
-  college: 'كلية العلوم الطبية التطبيقية',
+  college: 'كلية العلوم الطبية التطبيقية - جامعة طيبة',
   university: 'جامعة طيبة - المدينة المنورة',
   year: '1448هـ / 2026م',
   workshopTitle: 'الهوية الرقمية الأكاديمية والحضور البحثي العالمي',
@@ -43,10 +43,10 @@ export const WORKSHOP_MODULES = [
   },
   {
     id: 'action_plan',
-    title: 'خطة العمل والختام',
+    title: 'خطة العمل والتوصيات',
     duration: '05 دقائق',
     timeRange: '01:25 - 01:30',
-    desc: 'إصدار التقرير الفردي المطبوع، مراجعة قائمة الـ 30 يوماً، والشهادة التفاعلية.'
+    desc: 'إصدار خطة العمل الفردية المخصصة، مصفوفة التوصيات المبنية على النتائج، وقائمة مهام الـ 30 يوماً.'
   }
 ];
 
@@ -114,19 +114,191 @@ export const MATURITY_QUESTIONS = [
   }
 ];
 
-// Initial mock papers for the h-index dynamic calculator
-export const DEFAULT_PAPERS = [
-  { id: 1, title: 'Deep Learning Reconstruction in Low-Dose Computed Tomography: Clinical Trial', citations: 28 },
-  { id: 2, title: 'Optimization of Pediatric Radiation Exposure in Emergency Radiography', citations: 18 },
-  { id: 3, title: 'Multi-parametric MRI in Early Detection of Soft Tissue Anomalies', citations: 12 },
-  { id: 4, title: 'Evaluation of Image Quality Metrics in Digital Radiography Detectors', citations: 7 },
-  { id: 5, title: 'Artificial Intelligence Applications in Radiologic Technology: Review', citations: 5 },
-  { id: 6, title: 'Comparative Analysis of Protocol Standardization Across Regional Hospitals', citations: 4 },
-  { id: 7, title: 'Patient Safety and Dose Management Systems: A Saudi Multicenter Study', citations: 2 },
-  { id: 8, title: 'Emerging Radiotracers in Oncologic PET-CT: Future Horizons', citations: 1 },
-  { id: 9, title: 'Digital Transformation in Diagnostic Medical Imaging Curricula', citations: 0 },
-  { id: 10, title: 'Quality Control Benchmarks for Advanced Fluoroscopy Units', citations: 0 }
-];
+// Realistic Google Scholar Author Case Studies (Low & High Citations / h-index)
+export const SCHOLAR_AUTHOR_EXAMPLES = {
+  high: {
+    id: 'high',
+    name: 'Prof. Tariq M. Al-Ghamdi',
+    nameAr: 'أ.د. طارق بن محمد الغامدي',
+    initials: 'TG',
+    badgeText: 'مؤشرات عالية (High Impact)',
+    badgeColor: 'bg-emerald-100 text-emerald-800 border-emerald-300',
+    title: 'Professor of Computer Science & Artificial Intelligence',
+    titleAr: 'أستاذ الذكاء الاصطناعي وهندسة البيانات',
+    department: 'College of Computer Science & Engineering, Taibah University',
+    departmentAr: 'كلية علوم وهندسة الحاسب الآلي - جامعة طيبة',
+    verifiedEmail: 'tghamdi@taibahu.edu.sa',
+    interests: ['Artificial Intelligence', 'Health Informatics', 'Machine Learning', 'Data Science'],
+    totalCitations: 3450,
+    hIndex: 28,
+    i10Index: 42,
+    articles: [
+      {
+        id: 'h1_conf',
+        title: 'Federated Learning for Privacy-Preserving Medical Imaging Systems (Conference Proceedings)',
+        authors: 'TM Al-Ghamdi, H Zhao',
+        venue: 'IEEE Healthcare Informatics Symposium, pp. 24-29',
+        year: 2023,
+        citations: 95,
+        isDuplicateGroup: 'group_tg1'
+      },
+      {
+        id: 'h1_journal',
+        title: 'Federated Learning for Privacy-Preserving Medical Imaging Systems: Multicenter Clinical Deployment',
+        authors: 'TM Al-Ghamdi, H Zhao, K Miller',
+        venue: 'IEEE Transactions on Medical Imaging 43 (2), 410-425',
+        year: 2024,
+        citations: 260,
+        isDuplicateGroup: 'group_tg1'
+      },
+      {
+        id: 'h_intruder',
+        title: 'High-Temperature Viscosity of Slag Systems in Steelmaking Converters',
+        authors: 'T. Al-Ghamdi, B. Chen',
+        venue: 'ISIJ International 62 (8), 1620-1628',
+        year: 2022,
+        citations: 78,
+        isIntruder: true
+      },
+      {
+        id: 'h2',
+        title: 'Deep Convolutional Networks for Multimodal Clinical Data Fusion: A Comprehensive Survey',
+        authors: 'TM Al-Ghamdi, A Smith, S Kumar',
+        venue: 'Artificial Intelligence in Medicine 118, 102120',
+        year: 2021,
+        citations: 540,
+        isIntruder: false
+      },
+      {
+        id: 'h3',
+        title: 'Explainable AI in Clinical Decision Support: Real-World Multi-Hospital Deployment and Physician Trust',
+        authors: 'TM Al-Ghamdi, N Al-Otaibi',
+        venue: 'Journal of Biomedical Informatics 122, 103890',
+        year: 2022,
+        citations: 185,
+        isIntruder: false
+      },
+      {
+        id: 'h4',
+        title: 'Optimizing Neural Architecture Search for Edge Diagnostic Devices in Rural Health Centers',
+        authors: 'TM Al-Ghamdi',
+        venue: 'Sensors 23 (4), 1845',
+        year: 2023,
+        citations: 110,
+        isIntruder: false
+      },
+      {
+        id: 'h5',
+        title: 'Benchmarking Foundation Large Language Models in Arabic Medical Dialogue Understanding',
+        authors: 'TM Al-Ghamdi, M Hassan',
+        venue: 'Computers in Biology and Medicine 160, 107001',
+        year: 2024,
+        citations: 88,
+        isIntruder: false
+      }
+    ],
+    calculatorPapers: [
+      { id: 1, title: 'Deep Convolutional Networks for Multimodal Clinical Data Fusion: A Comprehensive Survey', citations: 540 },
+      { id: 2, title: 'Federated Learning for Privacy-Preserving Medical Imaging Systems', citations: 355 },
+      { id: 3, title: 'Explainable AI in Clinical Decision Support: Real-World Multi-Hospital Deployment', citations: 185 },
+      { id: 4, title: 'Optimizing Neural Architecture Search for Edge Diagnostic Devices in Rural Health Centers', citations: 110 },
+      { id: 5, title: 'Benchmarking Foundation Large Language Models in Arabic Medical Dialogue Understanding', citations: 88 },
+      { id: 6, title: 'Privacy-Preserving Deep Learning in Cloud Healthcare Architectures', citations: 74 },
+      { id: 7, title: 'Transfer Learning for Automated Diabetic Retinopathy Screening', citations: 65 },
+      { id: 8, title: 'Federated Optimization in Heterogeneous Medical Sensor Networks', citations: 52 },
+      { id: 9, title: 'Knowledge Graph Reasoning for Rare Disease Differential Diagnosis', citations: 44 },
+      { id: 10, title: 'Robustness and Adversarial Attacks on Clinical Vision Transformers', citations: 27 }
+    ]
+  },
+  low: {
+    id: 'low',
+    name: 'Dr. Fahad S. Al-Harbi',
+    nameAr: 'د. فهد بن سلطان الحربي',
+    initials: 'FH',
+    badgeText: 'مرحلة التأسيس (Early Career)',
+    badgeColor: 'bg-blue-100 text-blue-800 border-blue-300',
+    title: 'Assistant Professor of Health Informatics',
+    titleAr: 'أستاذ مساعد في نظم المعلومات الصحية',
+    department: 'College of Applied Medical Sciences, Taibah University',
+    departmentAr: 'كلية العلوم الطبية التطبيقية - جامعة طيبة',
+    verifiedEmail: 'fharbi@taibahu.edu.sa',
+    interests: ['Health Informatics', 'E-Health Protocols', 'Digital Health Transformation', 'Telemedicine'],
+    totalCitations: 38,
+    hIndex: 3,
+    i10Index: 1,
+    articles: [
+      {
+        id: 'l1_conf',
+        title: 'Adoption Challenges of Cloud-Based Electronic Health Records (Symposium Paper)',
+        authors: 'FS Al-Harbi',
+        venue: 'Saudi Health Informatics Conference, pp. 12-16',
+        year: 2024,
+        citations: 5,
+        isDuplicateGroup: 'group_fh1'
+      },
+      {
+        id: 'l1_journal',
+        title: 'Adoption Challenges of Cloud-Based Electronic Health Records in Regional Clinics: A Structural Equation Model',
+        authors: 'FS Al-Harbi, O Nasser',
+        venue: 'International Journal of Medical Informatics 182, 105310',
+        year: 2025,
+        citations: 16,
+        isDuplicateGroup: 'group_fh1'
+      },
+      {
+        id: 'l_intruder',
+        title: 'Thermomechanical Properties of Concrete Aggregates Under High Compression',
+        authors: 'F. Al-Harbi, D. Evans',
+        venue: 'Construction and Building Materials 290, 123450',
+        year: 2023,
+        citations: 22,
+        isIntruder: true
+      },
+      {
+        id: 'l2',
+        title: 'Evaluating Patient Engagement Portals in Primary Healthcare Centers',
+        authors: 'FS Al-Harbi, A Al-Sharif',
+        venue: 'BMC Health Services Research 24 (1), 89',
+        year: 2024,
+        citations: 11,
+        isIntruder: false
+      },
+      {
+        id: 'l3',
+        title: 'Usability Evaluation Framework for Mobile Telemedicine Applications',
+        authors: 'FS Al-Harbi',
+        venue: 'Digital Health 10, 20552076241234567',
+        year: 2024,
+        citations: 4,
+        isIntruder: false
+      },
+      {
+        id: 'l4',
+        title: 'Security and Consent Standards in Academic Medical Databases: A Review',
+        authors: 'FS Al-Harbi',
+        venue: 'Saudi Medical Informatics Review 3 (2), 45-52',
+        year: 2025,
+        citations: 2,
+        isIntruder: false
+      }
+    ],
+    calculatorPapers: [
+      { id: 1, title: 'Adoption Challenges of Cloud-Based Electronic Health Records: A Structural Equation Model', citations: 21 },
+      { id: 2, title: 'Evaluating Patient Engagement Portals in Primary Healthcare Centers', citations: 11 },
+      { id: 3, title: 'Usability Evaluation Framework for Mobile Telemedicine Applications', citations: 4 },
+      { id: 4, title: 'Security and Consent Standards in Academic Medical Databases: A Review', citations: 2 },
+      { id: 5, title: 'Comparative Analysis of Digital Health Literacy Across Generational Cohorts', citations: 2 },
+      { id: 6, title: 'Digital Transformation in Diagnostic Medical Informatics Curricula', citations: 1 },
+      { id: 7, title: 'Assessing Artificial Intelligence Readiness in Secondary Care Clinics', citations: 1 },
+      { id: 8, title: 'Tele-monitoring Compliance in Rural Outpatient Settings', citations: 1 },
+      { id: 9, title: 'Patient Data Privacy Governance in Smart Hospital Infrastructures', citations: 0 },
+      { id: 10, title: 'Quality Benchmarks for Electronic Health Records Usability', citations: 0 }
+    ]
+  }
+};
+
+// Initial default mock papers for the h-index dynamic calculator (Defaults to Low-h-index researcher for learning)
+export const DEFAULT_PAPERS = SCHOLAR_AUTHOR_EXAMPLES.low.calculatorPapers;
 
 // Curated Prompts for Controlled AI Studio (Fill-in-the-blanks)
 export const AI_PROMPT_TEMPLATES_CONFIG = [

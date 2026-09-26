@@ -96,7 +96,7 @@ export default function SettingsModal({ isOpen, onClose, apiStatus, onUpdateSett
               className="w-full p-2.5 rounded-xl border border-slate-300 font-mono text-xs focus:ring-2 focus:ring-taibah-emerald outline-none"
             />
             <span className="text-[10px] text-slate-400 block">
-              إذا تركته فارغاً، سيستخدم التطبيق تلقائياً مفتاح خادم الـ VPS الذي وضعه د. عزت، أو المحاكي الذكي.
+              إذا تركته فارغاً، سيستخدم التطبيق تلقائياً المفتاح المضبوط مسبقاً في الخادم، أو المحاكي الذكي المدمج.
             </span>
           </div>
 

@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { 
-  Play, Pause, RotateCcw, Clock, Award, Settings, UserCheck, 
-  HelpCircle, Sparkles, BookOpen, BarChart3, ShieldCheck 
+  Play, Pause, RotateCcw, Clock, Settings, UserCheck, 
+  Sparkles, BookOpen, BarChart3, ShieldCheck, FileText, ExternalLink
 } from 'lucide-react';
 import { PRESENTER_INFO } from '../data/initialData';
+import logoImg from '../assets/logo.png';
 
 export default function Header({ 
   activeTab, 
@@ -15,7 +16,8 @@ export default function Header({
   isTrainerMode, 
   setIsTrainerMode,
   openSettingsModal,
-  apiStatus
+  apiStatus,
+  isTrainerPage = false
 }) {
   const formatTime = (secs) => {
     const mins = Math.floor(secs / 60);
@@ -29,7 +31,7 @@ export default function Header({
     { id: 'metrics', label: '3. حاسبة معامل h ومؤشرات الأثر', icon: BarChart3 },
     { id: 'ai_studio', label: '4. مختبر الذكاء الاصطناعي المقيد', icon: Sparkles },
     { id: 'guides', label: '5. أدلة ما بعد الورشة', icon: BookOpen },
-    { id: 'action_plan', label: '6. خطة العمل والشهادة', icon: Award },
+    { id: 'action_plan', label: '6. خطة العمل والتوصيات الفردية', icon: FileText },
   ];
 
   return (
@@ -37,15 +39,22 @@ export default function Header({
       {/* Top University Branding Bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3 border-b border-slate-700/50">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-taibah-emerald to-taibah-cyan flex items-center justify-center font-bold text-lg text-taibah-navy shadow-md">
-            ط
-          </div>
+          <img 
+            src={logoImg} 
+            alt="شعار ورشة الهوية الرقمية الأكاديمية" 
+            className="w-10 h-10 rounded-xl object-contain bg-white/10 p-0.5 border border-taibah-emerald/40 shadow-md backdrop-blur-sm"
+          />
           <div>
             <div className="flex items-center gap-2">
               <span className="font-bold text-white text-base sm:text-lg">جامعة طيبة</span>
               <span className="text-xs bg-taibah-emerald/20 text-taibah-emerald border border-taibah-emerald/40 px-2 py-0.5 rounded-full font-medium">
                 عمادة التطوير والجودة 1448هـ
               </span>
+              {isTrainerPage && (
+                <span className="text-xs bg-amber-400/20 text-amber-300 border border-amber-400/40 px-2 py-0.5 rounded-full font-bold">
+                  بوابة المدرب 🎯
+                </span>
+              )}
             </div>
             <p className="text-xs text-slate-300">
               {PRESENTER_INFO.workshopTitle} (البرنامج رقم {PRESENTER_INFO.workshopCode})
@@ -59,7 +68,7 @@ export default function Header({
           <div className="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700 text-xs">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
             <div>
-              <span className="text-slate-300">تقديم: </span>
+              <span className="text-slate-300">إعداد وتقديم: </span>
               <span className="font-semibold text-taibah-cyan">{PRESENTER_INFO.name}</span>
               <span className="text-slate-400 text-[11px] block">{PRESENTER_INFO.title} - {PRESENTER_INFO.college}</span>
             </div>
@@ -67,24 +76,30 @@ export default function Header({
 
           {/* 90-Min Workshop Timer */}
           <div className="flex items-center gap-2 bg-slate-900/90 border border-taibah-emerald/50 px-3 py-1.5 rounded-xl shadow-inner">
-            <Clock className="w-4 h-4 text-taibah-cyan" />
+            <Clock className={`w-4 h-4 ${isTimerRunning ? 'text-taibah-cyan animate-pulse' : 'text-slate-400'}`} />
             <div className="text-center font-mono">
-              <span className={`text-base font-bold tracking-wider ${timerSeconds < 600 ? 'text-amber-400' : 'text-emerald-400'}`}>
+              <span className={`text-base font-bold tracking-wider ${timerSeconds < 600 ? 'text-amber-400 animate-pulse' : 'text-emerald-400'}`}>
                 {formatTime(timerSeconds)}
               </span>
-              <span className="text-[10px] text-slate-400 block -mt-1">مؤقت الورشة (90 د)</span>
+              <span className={`text-[10px] block -mt-1 ${isTimerRunning ? 'text-emerald-400 font-semibold' : 'text-slate-400'}`}>
+                {isTimerRunning ? 'مؤقت الورشة (نشط)' : 'مؤقت الورشة (متوقف)'}
+              </span>
             </div>
-            <div className="flex items-center gap-1 mr-1">
+
+            {/* Timer controls */}
+            <div className="flex items-center gap-1 mr-1 border-r border-slate-700 pr-1.5">
               <button
+                type="button"
                 onClick={() => setIsTimerRunning(!isTimerRunning)}
-                className="p-1 rounded-md hover:bg-slate-800 text-slate-300 hover:text-white transition"
+                className="p-1 rounded-md hover:bg-slate-800 text-slate-300 hover:text-white transition cursor-pointer"
                 title={isTimerRunning ? 'إيقاف مؤقت' : 'تشغيل المؤقت'}
               >
                 {isTimerRunning ? <Pause className="w-3.5 h-3.5 text-amber-400" /> : <Play className="w-3.5 h-3.5 text-emerald-400" />}
               </button>
               <button
+                type="button"
                 onClick={resetTimer}
-                className="p-1 rounded-md hover:bg-slate-800 text-slate-300 hover:text-white transition"
+                className="p-1 rounded-md hover:bg-slate-800 text-slate-300 hover:text-white transition cursor-pointer"
                 title="إعادة ضبط 90 دقيقة"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
@@ -92,29 +107,33 @@ export default function Header({
             </div>
           </div>
 
-          {/* Trainer Mode Toggle */}
-          <button
-            onClick={() => setIsTrainerMode(!isTrainerMode)}
-            className={`px-2.5 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition border ${
-              isTrainerMode 
-                ? 'bg-taibah-gold text-slate-950 border-amber-300 shadow-md' 
-                : 'bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700'
-            }`}
-            title="تبديل وضع المدرب (إرشادات العرض والحلول)"
-          >
-            <span className="text-sm">🎯</span>
-            <span className="hidden sm:inline">{isTrainerMode ? 'وضع المدرب نشط' : 'وضع المتدرب'}</span>
-          </button>
+          {/* Trainer Mode Toggle - ONLY for Trainer Page */}
+          {isTrainerPage && (
+            <button
+              onClick={() => setIsTrainerMode(!isTrainerMode)}
+              className={`px-2.5 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition border cursor-pointer ${
+                isTrainerMode 
+                  ? 'bg-amber-400 text-slate-950 border-amber-300 shadow-md font-bold' 
+                  : 'bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700'
+              }`}
+              title="تبديل وضع المدرب (إرشادات العرض والحلول)"
+            >
+              <span className="text-sm">🎯</span>
+              <span className="hidden sm:inline">{isTrainerMode ? 'وضع المدرب نشط' : 'إرشادات المدرب'}</span>
+            </button>
+          )}
 
-          {/* Settings Modal Trigger */}
-          <button
-            onClick={openSettingsModal}
-            className="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 hover:text-white transition relative"
-            title="إعدادات الربط والذكاء الاصطناعي"
-          >
-            <Settings className="w-4 h-4" />
-            <span className={`w-2 h-2 rounded-full absolute -top-0.5 -right-0.5 ${apiStatus.apiKeyConfigured ? 'bg-emerald-400' : 'bg-amber-400'}`}></span>
-          </button>
+          {/* Settings Modal Trigger - ONLY for Trainer Page */}
+          {isTrainerPage && (
+            <button
+              onClick={openSettingsModal}
+              className="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 hover:text-white transition relative cursor-pointer"
+              title="إعدادات الربط والذكاء الاصطناعي (حصري للمدرب)"
+            >
+              <Settings className="w-4 h-4" />
+              <span className={`w-2 h-2 rounded-full absolute -top-0.5 -right-0.5 ${apiStatus.apiKeyConfigured ? 'bg-emerald-400' : 'bg-amber-400'}`}></span>
+            </button>
+          )}
         </div>
       </div>
 
@@ -128,9 +147,9 @@ export default function Header({
               <button
                 key={item.id}
                 onClick={() => setActiveTab(item.id)}
-                className={`flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap transition-all ${
+                className={`px-3 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 whitespace-nowrap transition-all cursor-pointer ${
                   isActive
-                    ? 'bg-gradient-to-r from-taibah-emerald to-emerald-600 text-white shadow-md font-bold'
+                    ? 'bg-taibah-emerald text-white shadow-md'
                     : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
                 }`}
               >

@@ -80,7 +80,7 @@ export default function MaturityAssessment({
         <div className="bg-amber-50 border border-amber-300 rounded-xl p-4 text-amber-900 text-xs sm:text-sm flex items-start gap-3 shadow-sm">
           <span className="text-lg">💡</span>
           <div>
-            <span className="font-bold block mb-1">إرشادات المحاضر (د. عزت أبوعزه) للشريحة رقم 04:</span>
+            <span className="font-bold block mb-1">إرشادات مقدم ومعد الورشة (د. عزت أبوعزه) للشريحة رقم 04:</span>
             اطلب من الزملاء أعضاء هيئة التدريس الإجابة بصدق تام دون تردد. وضح لهم أن وجود أصفار في بعض المنصات أمر طبيعي وشائع جداً في بداية المشوار، وأن الهدف الأساسي من الورشة هو تحويل أي نقطة ضعف إلى شارة إنجاز عملية وملموسة.
           </div>
         </div>

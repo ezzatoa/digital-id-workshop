@@ -109,12 +109,12 @@ export default function ResearchGateSimulation({ onCompleteBadge, isCompleted, i
             <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
               <div className="flex items-center gap-4">
                 <div className="w-16 h-16 rounded-2xl bg-[#00ccbb] text-white font-bold text-2xl flex items-center justify-center shadow-lg">
-                  EA
+                  TG
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white">Dr. Ezzat Aboazza</h3>
+                  <h3 className="text-xl font-bold text-white">Prof. Tariq Al-Ghamdi</h3>
                   <p className="text-xs text-[#00ccbb] font-medium">
-                    Taibah University • Department of Radiologic Technology
+                    Taibah University • College of Computer Science & Engineering
                   </p>
                   <p className="text-xs text-slate-300 mt-0.5">
                     Medina, Saudi Arabia
@@ -223,7 +223,7 @@ export default function ResearchGateSimulation({ onCompleteBadge, isCompleted, i
                     <span className="text-[10px] text-slate-400 font-mono">منذ ساعتين</span>
                   </div>
                   <p className="text-xs text-slate-600 italic bg-slate-50 p-2.5 rounded-lg border border-slate-100" dir="ltr">
-                    "Dear Dr. Aboazza, I am working on radiation optimization protocols and would be very grateful if you could share the full text of your recent study. Kind regards."
+                    "Dear Prof. Al-Ghamdi, I am working on healthcare informatics and privacy-preserving algorithms and would be very grateful if you could share the full text of your recent study. Kind regards."
                   </p>
 
                   <div className="pt-2 flex items-center justify-between">
@@ -242,7 +242,7 @@ export default function ResearchGateSimulation({ onCompleteBadge, isCompleted, i
                 </div>
 
                 <div className="p-3 bg-blue-50 border border-blue-200 rounded-xl text-xs text-blue-950">
-                  <strong className="block mb-1">💡 معلومة للمحاضر (د. عزت أبوعزه):</strong>
+                  <strong className="block mb-1">💡 إضاءة تدريبية هامة:</strong>
                   قوانين حماية الملكية الفكرية تسمح للباحث بمشاركة أبحاثه الفردية مع زملائه الباحثين (One-to-One Scholarly Sharing)، وهذا يختلف تماماً عن النشر العلني المتاح للجميع على الإنترنت!
                 </div>
               </div>

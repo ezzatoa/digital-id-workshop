@@ -213,7 +213,7 @@ ORCID: 0000-xxxx-xxxx-xxxx | Institutional Profile: taibahu.edu.sa
 
 ---
 
-#### 💡 نصائح المحاضر (د. عزت أبوعزه) للمتابعة الناجحة:
+#### 💡 نصائح وتوجيهات للمتابعة الناجحة:
 1. أرسل الرسالة من إيميلك الجامعي الرسمي (@taibahu.edu.sa) صباح يوم الثلاثاء أو الأربعاء بتوقيت دولة الباحث لتفادي عطلة نهاية الأسبوع.
 2. إذا لم تتلقَ رداً خلال 10 إلى 14 يوماً، أرسل تذكيراً مهذباً من جملتين (Polite Follow-up).`;
     }
@@ -394,6 +394,11 @@ app.use('/digital-id-workshop/api', apiRouter);
 const distPath = path.join(__dirname, 'dist');
 const portalPath = path.join(__dirname, 'portal.html');
 
+// Direct logo and favicon shortcuts
+app.get(['/logo.png', '/favicon.ico', '/favicon.png'], (req, res) => {
+  res.sendFile(path.join(distPath, 'logo.png'));
+});
+
 app.use('/digital-id-workshop', express.static(distPath, { index: false }));
 
 // Digital Identity Workshop SPA routes (excluding API calls)
@@ -402,6 +407,11 @@ app.get(['/digital-id-workshop', '/digital-id-workshop/*'], (req, res, next) => 
     return next();
   }
   res.sendFile(path.join(distPath, 'index.html'));
+});
+
+// Trainer Direct Shortcut
+app.get('/trainer', (req, res) => {
+  res.redirect('/digital-id-workshop/trainer');
 });
 
 // Host Domain Root Route: Portal listing available workshops
@@ -421,7 +431,7 @@ app.get('*', (req, res) => {
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`=======================================================`);
   console.log(`ورشة الهوية الرقمية الأكاديمية والحضور البحثي العالمي`);
-  console.log(`مقدم الورشة: د. عزت عمر عبدالله أبوعزه - جامعة طيبة`);
+  console.log(`إعداد وتقديم: د. عزت عمر عبدالله أبوعزه - جامعة طيبة`);
   console.log(`الخادم يعمل بنجاح على: http://localhost:${PORT}`);
   console.log(`مفتاح Gemini API: ${process.env.GEMINI_API_KEY ? 'مضبوط في الخادم' : 'غير مضبوط (المحاكي الاحتياطي نشط)'}`);
   console.log(`=======================================================`);

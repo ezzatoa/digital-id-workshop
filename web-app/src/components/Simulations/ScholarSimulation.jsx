@@ -1,56 +1,30 @@
 import React, { useState } from 'react';
-import { CheckCircle2, Merge, Trash2, Globe, Lock, Mail, Sparkles, BookOpen, AlertCircle, TrendingUp, BarChart2 } from 'lucide-react';
+import { CheckCircle2, Merge, Trash2, Globe, Lock, Mail, Sparkles, BookOpen, AlertCircle, TrendingUp, BarChart2, Users, Award, Compass } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { SCHOLAR_AUTHOR_EXAMPLES } from '../../data/initialData';
 
 export default function ScholarSimulation({ onCompleteBadge, isCompleted, isTrainerMode }) {
   const [activeSubTab, setActiveSubTab] = useState('sim'); // 'sim' or 'guide'
+  const [selectedAuthorKey, setSelectedAuthorKey] = useState('high'); // 'high' or 'low'
+
+  const currentAuthor = SCHOLAR_AUTHOR_EXAMPLES[selectedAuthorKey];
 
   const [isPublic, setIsPublic] = useState(true);
   const [autoUpdateMode, setAutoUpdateMode] = useState('review'); // 'auto' or 'review'
-  const [verifiedEmail, setVerifiedEmail] = useState('eaboazza@taibahu.edu.sa');
   const [selectedArticles, setSelectedArticles] = useState([]);
   const [mergedNotice, setMergedNotice] = useState(null);
   const [savedSuccess, setSavedSuccess] = useState(false);
 
-  // Articles state
-  const [articles, setArticles] = useState([
-    {
-      id: 'art1_conf',
-      title: 'Low-Dose CT Image Quality Assessment (Conference Proceedings)',
-      authors: 'EO Aboazza, M Alghamdi',
-      venue: 'IEEE International Imaging Symposium, pp. 45-49',
-      year: 2024,
-      citations: 6,
-      isDuplicateGroup: 'group1'
-    },
-    {
-      id: 'art1_journal',
-      title: 'Low-Dose CT Image Quality Assessment and Denoising via Deep Learning',
-      authors: 'EO Aboazza, M Alghamdi, K Miller',
-      venue: 'Journal of Radiologic Diagnostics 14 (3), 112-120',
-      year: 2025,
-      citations: 15,
-      isDuplicateGroup: 'group1'
-    },
-    {
-      id: 'art_intruder',
-      title: 'Synthesis of Novel Heterocyclic Polymers for Photovoltaic Cells',
-      authors: 'E. Aboazza, S. Kumar',
-      venue: 'Journal of Applied Polymer Chemistry 40 (2), 44-50',
-      year: 2023,
-      citations: 18,
-      isIntruder: true
-    },
-    {
-      id: 'art3',
-      title: 'Pediatric Dose Reduction Strategies in Modern Emergency Fluoroscopy',
-      authors: 'EO Aboazza',
-      venue: 'Saudi Medical Imaging Journal 9 (1), 30-38',
-      year: 2025,
-      citations: 9,
-      isIntruder: false
-    }
-  ]);
+  // Articles state initialized from current case study
+  const [articles, setArticles] = useState(currentAuthor.articles);
+
+  // Switch author case study
+  const handleSelectAuthor = (key) => {
+    setSelectedAuthorKey(key);
+    setArticles(SCHOLAR_AUTHOR_EXAMPLES[key].articles);
+    setSelectedArticles([]);
+    setMergedNotice(null);
+  };
 
   const toggleSelect = (id) => {
     if (selectedArticles.includes(id)) {
@@ -65,13 +39,13 @@ export default function ScholarSimulation({ onCompleteBadge, isCompleted, isTrai
     
     const itemsToMerge = articles.filter(a => selectedArticles.includes(a.id));
     const totalCitations = itemsToMerge.reduce((sum, a) => sum + a.citations, 0);
-    const primaryItem = itemsToMerge.find(a => a.venue.includes('Journal')) || itemsToMerge[0];
+    const primaryItem = itemsToMerge.find(a => a.venue.includes('Journal') || a.venue.includes('Transactions')) || itemsToMerge[0];
 
     const mergedItem = {
       ...primaryItem,
       id: 'merged_' + Date.now(),
       citations: totalCitations,
-      title: primaryItem.title + ' [نسخة موحدة مدمجة]',
+      title: primaryItem.title.replace(' (Conference Proceedings)', '').replace(' (Symposium Paper)', '') + ' [نسخة موحدة مدمجة]',
       isMerged: true
     };
 
@@ -84,7 +58,7 @@ export default function ScholarSimulation({ onCompleteBadge, isCompleted, isTrai
   const handleDeleteIntruder = (id) => {
     setArticles(articles.filter(a => a.id !== id));
     setSelectedArticles(selectedArticles.filter(item => item !== id));
-    setMergedNotice('تم استبعاد البحث غير التابع لك بنجاح لحماية نزاهة سجلك العلمي.');
+    setMergedNotice('تم استبعاد البحث غير التابع للباحث بنجاح لحماية نزاهة سجله العلمي وتخصصه.');
   };
 
   // Dynamic metrics calculation
@@ -113,14 +87,14 @@ export default function ScholarSimulation({ onCompleteBadge, isCompleted, isTrai
   return (
     <div className="space-y-6">
       {/* Tab Header */}
-      <div className="flex items-center justify-between border-b border-slate-200 pb-3">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 pb-3">
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-lg bg-[#4285f4] flex items-center justify-center font-bold text-white text-sm shadow-sm">
             G
           </div>
           <div>
             <h2 className="text-lg font-bold text-taibah-navy">محاكي منصة Google Scholar (باحث Google العلمي)</h2>
-            <p className="text-xs text-slate-500">مختبر تطبيقي لتوثيق البريد الجامعي، دمج النسخ المكررة، واستبعاد الأبحاث الدخيلة</p>
+            <p className="text-xs text-slate-500">مختبر تطبيقي عملي لدراسة حالتين مختلفتين (باحث مرتفع الاستشهادات وباحث في مرحلة التأسيس)</p>
           </div>
         </div>
 
@@ -146,10 +120,75 @@ export default function ScholarSimulation({ onCompleteBadge, isCompleted, isTrai
         </div>
       </div>
 
+      {/* Case Study Switcher: High vs Low Citations / h-index */}
+      <div className="bg-slate-100/80 p-3 rounded-2xl border border-slate-200 space-y-2">
+        <div className="flex items-center justify-between">
+          <span className="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+            <Users className="w-4 h-4 text-taibah-navy" />
+            اختر نموذج الباحث للمحاكاة والتطبيق (Google Scholar Case Studies):
+          </span>
+          <span className="text-[11px] text-slate-500 hidden sm:inline">
+            قارن أثر دمج الأوراق واستبعاد الدخيل بين باحث متقدم وباحث مبتدئ
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {/* Author 1: High Citations */}
+          <button
+            onClick={() => handleSelectAuthor('high')}
+            className={`p-3 rounded-xl border text-right transition flex items-center justify-between cursor-pointer ${
+              selectedAuthorKey === 'high'
+                ? 'bg-white border-emerald-500 shadow-md ring-2 ring-emerald-500/20'
+                : 'bg-white/60 hover:bg-white border-slate-200'
+            }`}
+          >
+            <div className="space-y-0.5">
+              <div className="flex items-center gap-2">
+                <span className="font-bold text-xs text-slate-900">{SCHOLAR_AUTHOR_EXAMPLES.high.nameAr}</span>
+                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300">
+                  استشهادات عالية • High h-index
+                </span>
+              </div>
+              <p className="text-[11px] text-slate-500 font-mono" dir="ltr">{SCHOLAR_AUTHOR_EXAMPLES.high.name}</p>
+              <p className="text-[11px] text-slate-600">{SCHOLAR_AUTHOR_EXAMPLES.high.titleAr}</p>
+            </div>
+            <div className="text-left font-mono pl-2">
+              <span className="text-sm font-black text-emerald-600 block">h: 28</span>
+              <span className="text-[10px] text-slate-400">3,450 استشهاد</span>
+            </div>
+          </button>
+
+          {/* Author 2: Low Citations */}
+          <button
+            onClick={() => handleSelectAuthor('low')}
+            className={`p-3 rounded-xl border text-right transition flex items-center justify-between cursor-pointer ${
+              selectedAuthorKey === 'low'
+                ? 'bg-white border-blue-500 shadow-md ring-2 ring-blue-500/20'
+                : 'bg-white/60 hover:bg-white border-slate-200'
+            }`}
+          >
+            <div className="space-y-0.5">
+              <div className="flex items-center gap-2">
+                <span className="font-bold text-xs text-slate-900">{SCHOLAR_AUTHOR_EXAMPLES.low.nameAr}</span>
+                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-100 text-blue-800 border border-blue-300">
+                  مرحلة التأسيس • Early Career
+                </span>
+              </div>
+              <p className="text-[11px] text-slate-500 font-mono" dir="ltr">{SCHOLAR_AUTHOR_EXAMPLES.low.name}</p>
+              <p className="text-[11px] text-slate-600">{SCHOLAR_AUTHOR_EXAMPLES.low.titleAr}</p>
+            </div>
+            <div className="text-left font-mono pl-2">
+              <span className="text-sm font-black text-blue-600 block">h: 3</span>
+              <span className="text-[10px] text-slate-400">38 استشهاد</span>
+            </div>
+          </button>
+        </div>
+      </div>
+
       {isTrainerMode && (
         <div className="bg-blue-50 border border-blue-300 rounded-xl p-3 text-xs text-blue-900">
-          <span className="font-bold">🎯 توجيه المحاضر للشريحة رقم 12:</span>
-          اطلب من المتدربين تحديد البحثين الأولين والضغط على زر "دمج (Merge)" ليروا كيف يقفز عدد الاستشهادات من 15 إلى 21، ثم اطلب منهم حذف البحث الكيميائي الدخيل لحماية تخصص تقنية الأشعة.
+          <span className="font-bold">🎯 توجيه المدرب للشريحة رقم 12:</span>
+          دع المتدربين يجربون التبديل بين النموذجين، وتحديد الورقتين المكررتين (نسخة المؤتمر/الملخص والنسخة النهائية للمجلة) والضغط على "دمج"، ثم استبعاد الورقة الدخيلة غير التابعة لتخصص الباحث لمشاهدة الانضباط الأكاديمي المباشر.
         </div>
       )}
 
@@ -159,27 +198,31 @@ export default function ScholarSimulation({ onCompleteBadge, isCompleted, isTrai
           <div className="bg-slate-50 border-b border-slate-200 p-6">
             <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
               <div className="flex items-center gap-4">
-                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-blue-600 to-indigo-700 text-white font-bold text-2xl flex items-center justify-center shadow-md">
-                  EA
+                <div className={`w-20 h-20 rounded-full text-white font-bold text-2xl flex items-center justify-center shadow-md ${
+                  selectedAuthorKey === 'high' ? 'bg-gradient-to-br from-emerald-600 to-teal-700' : 'bg-gradient-to-br from-blue-600 to-indigo-700'
+                }`}>
+                  {currentAuthor.initials}
                 </div>
                 <div className="space-y-1">
                   <div className="flex items-center gap-2">
-                    <h3 className="text-xl font-bold text-slate-900">Dr. Ezzat Aboazza</h3>
+                    <h3 className="text-xl font-bold text-slate-900">{currentAuthor.name}</h3>
                     <span className="text-xs bg-emerald-100 text-emerald-800 border border-emerald-300 px-2 py-0.5 rounded-full font-semibold flex items-center gap-1">
                       <CheckCircle2 className="w-3 h-3 text-emerald-600" /> تم التحقق بالبريد
                     </span>
                   </div>
                   <p className="text-xs text-slate-600">
-                    Assistant Professor of Radiologic Technology, Taibah University
+                    {currentAuthor.title}, {currentAuthor.department}
                   </p>
                   <p className="text-xs text-slate-500 flex items-center gap-1">
                     <Mail className="w-3 h-3 text-taibah-emerald" />
                     بريد إلكتروني تم التحقق منه في <span className="font-semibold text-slate-700 font-mono">taibahu.edu.sa</span>
                   </p>
-                  <div className="flex gap-1.5 pt-1">
-                    <span className="text-[11px] px-2 py-0.5 rounded bg-slate-200 text-slate-700">Medical Imaging</span>
-                    <span className="text-[11px] px-2 py-0.5 rounded bg-slate-200 text-slate-700">Radiology</span>
-                    <span className="text-[11px] px-2 py-0.5 rounded bg-slate-200 text-slate-700">AI in Healthcare</span>
+                  <div className="flex flex-wrap gap-1.5 pt-1">
+                    {currentAuthor.interests.map((interest, idx) => (
+                      <span key={idx} className="text-[11px] px-2 py-0.5 rounded bg-slate-200 text-slate-700">
+                        {interest}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </div>

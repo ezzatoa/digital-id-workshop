@@ -7,12 +7,12 @@ export default function OrcidSimulation({ onCompleteBadge, isCompleted, isTraine
   
   // Simulation form states
   const [formData, setFormData] = useState({
-    firstName: 'عزت',
-    lastName: 'أبوعزه',
-    latinName: 'Ezzat Aboazza',
-    variants: 'E. Aboazza; Ezzat O. Aboazza; E. Abu-Azza',
+    firstName: 'طارق',
+    lastName: 'الغامدي',
+    latinName: 'Tariq Al-Ghamdi',
+    variants: 'T. M. Al-Ghamdi; Tariq Mohammed Alghamdi; T. Alghamdi',
     institution: 'جامعة طيبة - Taibah University',
-    department: 'قسم تقنية الأشعة - كلية العلوم الطبية التطبيقية',
+    department: 'كلية علوم وهندسة الحاسب الآلي',
     privacy: 'everyone', // 'everyone', 'trusted', 'only_me'
     crossrefSync: true
   });
