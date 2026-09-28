@@ -380,17 +380,6 @@ export default function App() {
               <span className="font-bold text-taibah-cyan">{PRESENTER_INFO.name}</span>
               <span className="text-slate-500 mr-1">({PRESENTER_INFO.title} - {PRESENTER_INFO.college})</span>
             </div>
-
-            {/* Quick discrete trainer switch in footer for convenience */}
-            {!isTrainerPage && (
-              <a 
-                href="/digital-id-workshop/trainer" 
-                className="text-[10px] text-slate-500 hover:text-slate-300 border border-slate-700 rounded px-1.5 py-0.5 transition"
-                title="بوابة دخول المدرب"
-              >
-                دخول المدرب 🎯
-              </a>
-            )}
           </div>
         </div>
       </footer>
