@@ -4,7 +4,7 @@ import {
   BookOpen, Sparkles, AlertTriangle, ArrowRight, ShieldCheck, 
   Target, Calendar, CheckSquare, Lightbulb, Compass, Share2
 } from 'lucide-react';
-import { PRESENTER_INFO } from '../data/initialData';
+import { PRESENTER_INFO, WORKSHOP_PRESENTATION } from '../data/initialData';
 import logoImg from '../assets/logo.png';
 
 export default function ActionPlanExport({ 
@@ -479,6 +479,55 @@ export default function ActionPlanExport({
             </div>
           </div>
         )}
+
+        {/* Approved Workshop Slides & Documentation Reference */}
+        <div className="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-200/80 space-y-2">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div className="flex items-center gap-2.5">
+              <span className="text-xl">📑</span>
+              <div>
+                <h4 className="text-xs font-bold text-slate-900">
+                  العرض التقديمي المعتمد للورشة (Google Slides - 40 شريحة):
+                </h4>
+                <p className="text-[11px] text-slate-600">
+                  مرجعك الدائم لمراجعة كافة الأمثلة العملية، والمقارنات، والمعادلات المشروحة في الورشة.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-1.5 flex-wrap no-print">
+              <a
+                href={WORKSHOP_PRESENTATION.presentUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-2.5 py-1 bg-taibah-emerald hover:bg-emerald-600 text-white rounded-lg text-[11px] font-bold transition flex items-center gap-1 shadow-2xs"
+              >
+                <span>عرض كامل 🖥️</span>
+              </a>
+              <a
+                href={WORKSHOP_PRESENTATION.directUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-white rounded-lg text-[11px] font-medium transition flex items-center gap-1"
+              >
+                <span>Google Slides ↗</span>
+              </a>
+              <a
+                href={WORKSHOP_PRESENTATION.pdfExportUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-2.5 py-1 bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 rounded-lg text-[11px] font-medium transition flex items-center gap-1"
+              >
+                <span>تحميل PDF 📥</span>
+              </a>
+            </div>
+          </div>
+          
+          {/* For Print format */}
+          <div className="hidden print:block text-[10px] text-slate-500 font-mono pt-1 border-t border-emerald-200">
+            رابط العرض التقديمي المباشر: {WORKSHOP_PRESENTATION.directUrl}
+          </div>
+        </div>
 
         {/* Official Document Footnote & Academic Sign-off */}
         <div className="pt-8 border-t-2 border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-right">

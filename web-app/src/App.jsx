@@ -7,9 +7,10 @@ import ControlledAiStudio from './components/AiStudio/ControlledAiStudio';
 import PostWorkshopGuides from './components/PostWorkshopGuides';
 import ActionPlanExport from './components/ActionPlanExport';
 import SettingsModal from './components/SettingsModal';
-import { PRESENTER_INFO, WORKSHOP_MODULES } from './data/initialData';
+import PresentationViewerModal from './components/PresentationViewerModal';
+import { PRESENTER_INFO, WORKSHOP_MODULES, WORKSHOP_PRESENTATION } from './data/initialData';
 import { getApiUrl } from './utils/api';
-import { ExternalLink, ShieldCheck, Sparkles, Sliders } from 'lucide-react';
+import { ExternalLink, ShieldCheck, Sparkles, Sliders, Presentation } from 'lucide-react';
 
 const TOTAL_WORKSHOP_SECONDS = 90 * 60; // 90 minutes = 5400s
 
@@ -62,6 +63,7 @@ export default function App() {
   // Trainer Mode is active by default ONLY on the trainer page
   const [isTrainerMode, setIsTrainerMode] = useState(isTrainerPage);
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [presentationOpen, setPresentationOpen] = useState(false);
 
   // Global Progress States
   const [maturityAnswers, setMaturityAnswers] = useState({});
@@ -246,6 +248,15 @@ export default function App() {
               </span>
 
               <button
+                onClick={() => setPresentationOpen(true)}
+                className="bg-slate-900 hover:bg-slate-800 text-taibah-cyan px-3 py-1 rounded-lg text-xs font-bold flex items-center gap-1.5 transition cursor-pointer border border-taibah-emerald/40"
+                title="عرض شرائح Google Slides المعتمدة"
+              >
+                <Presentation className="w-3.5 h-3.5 text-taibah-emerald" />
+                <span>شرائح الورشة (40)</span>
+              </button>
+
+              <button
                 onClick={() => setSettingsOpen(true)}
                 className="bg-slate-900 hover:bg-slate-800 text-white px-3 py-1 rounded-lg text-xs font-bold flex items-center gap-1.5 transition cursor-pointer"
               >
@@ -279,6 +290,7 @@ export default function App() {
         isTrainerMode={effectiveTrainerMode}
         setIsTrainerMode={setIsTrainerMode}
         openSettingsModal={() => setSettingsOpen(true)}
+        openPresentationModal={() => setPresentationOpen(true)}
         apiStatus={apiStatus}
         isTrainerPage={isTrainerPage}
       />
@@ -330,6 +342,12 @@ export default function App() {
           />
         )}
       </main>
+
+      {/* Presentation Viewer Modal (Available for all participants & trainer) */}
+      <PresentationViewerModal
+        isOpen={presentationOpen}
+        onClose={() => setPresentationOpen(false)}
+      />
 
       {/* Settings Modal (Accessible ONLY via Trainer Page) */}
       {isTrainerPage && (

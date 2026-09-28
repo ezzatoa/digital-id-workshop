@@ -414,6 +414,11 @@ app.get('/trainer', (req, res) => {
   res.redirect('/digital-id-workshop/trainer');
 });
 
+// Workshop Presentation Direct Shortcut
+app.get(['/slides', '/presentation', '/digital-id-workshop/slides'], (req, res) => {
+  res.redirect('https://docs.google.com/presentation/d/1NaqXsU4fDvWM8mIoCfR8LMhaYPVnB4Bd/present');
+});
+
 // Host Domain Root Route: Portal listing available workshops
 app.get(['/', '/index.html', '/workshops'], (req, res) => {
   if (fs.existsSync(portalPath)) {

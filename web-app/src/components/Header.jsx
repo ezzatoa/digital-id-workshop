@@ -1,7 +1,8 @@
 import React from 'react';
 import { 
   Play, Pause, RotateCcw, Clock, Settings, UserCheck, 
-  Sparkles, BookOpen, BarChart3, ShieldCheck, FileText, ExternalLink
+  Sparkles, BookOpen, BarChart3, ShieldCheck, FileText, ExternalLink,
+  Presentation
 } from 'lucide-react';
 import { PRESENTER_INFO } from '../data/initialData';
 import logoImg from '../assets/logo.png';
@@ -16,6 +17,7 @@ export default function Header({
   isTrainerMode, 
   setIsTrainerMode,
   openSettingsModal,
+  openPresentationModal,
   apiStatus,
   isTrainerPage = false
 }) {
@@ -106,6 +108,20 @@ export default function Header({
               </button>
             </div>
           </div>
+
+          {/* Workshop Presentation Slides Button */}
+          <button
+            type="button"
+            onClick={openPresentationModal}
+            className="px-3 py-1.5 rounded-xl bg-taibah-emerald/20 hover:bg-taibah-emerald text-taibah-cyan hover:text-white border border-taibah-emerald/50 hover:border-taibah-emerald transition-all text-xs font-bold flex items-center gap-2 shadow-sm cursor-pointer group shrink-0"
+            title="عرض شرائح Google Slides المعتمدة للورشة (40 شريحة)"
+          >
+            <Presentation className="w-4 h-4 text-taibah-emerald group-hover:text-white transition-colors" />
+            <span className="hidden sm:inline">شرائح الورشة</span>
+            <span className="text-[10px] bg-taibah-navy/80 px-1.5 py-0.5 rounded text-taibah-cyan border border-taibah-emerald/40 group-hover:border-white/40">
+              40 شريحة 📊
+            </span>
+          </button>
 
           {/* Trainer Mode Toggle - ONLY for Trainer Page */}
           {isTrainerPage && (

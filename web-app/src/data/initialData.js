@@ -479,3 +479,17 @@ export const PLATFORM_GUIDES = {
     commonErrors: 'الخطأ الأكثر شيوعاً: عدم فحص Scopus إلا عند موعد الترقية، فيتفاجأ الباحث بنقص أبحاثه أو تشتت معامله في ملفات متعددة.'
   }
 };
+
+// Official Google Presentation Configuration & Direct Links
+export const WORKSHOP_PRESENTATION = {
+  id: '1NaqXsU4fDvWM8mIoCfR8LMhaYPVnB4Bd',
+  title: 'الهوية الرقمية الأكاديمية والحضور البحثي العالمي',
+  subtitle: 'العرض التقديمي الشامل والشرائح التدريبية المعتمدة (40 شريحة)',
+  embedUrl: 'https://docs.google.com/presentation/d/1NaqXsU4fDvWM8mIoCfR8LMhaYPVnB4Bd/embed?start=false&loop=false&delayms=3000',
+  directUrl: 'https://docs.google.com/presentation/d/1NaqXsU4fDvWM8mIoCfR8LMhaYPVnB4Bd/edit?usp=sharing',
+  presentUrl: 'https://docs.google.com/presentation/d/1NaqXsU4fDvWM8mIoCfR8LMhaYPVnB4Bd/present',
+  pdfExportUrl: 'https://docs.google.com/presentation/d/1NaqXsU4fDvWM8mIoCfR8LMhaYPVnB4Bd/export/pdf',
+  pptxExportUrl: 'https://docs.google.com/presentation/d/1NaqXsU4fDvWM8mIoCfR8LMhaYPVnB4Bd/export/pptx',
+  originalUrl: 'https://docs.google.com/presentation/d/1NaqXsU4fDvWM8mIoCfR8LMhaYPVnB4Bd/edit?slide=id.p39#slide=id.p39',
+  description: 'العرض التقديمي المعتمد لورشة العمل والمعد من قِبل د. عزت عمر عبدالله أبوعزه، ويحتوي على كافة المحاور النظرية والتطبيقية، ومصفوفات المقارنة، والخرائط الذهنية لإدارة الهوية الرقمية الأكاديمية.'
+};

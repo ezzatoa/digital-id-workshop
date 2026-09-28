@@ -40,6 +40,10 @@ wheels/
 ~$*.docx
 ~$*.xlsx
 *.tmp
+* - Copy.pptx
+* - google.pptx
+radiation_lab_week5.html
+README_RADIATION_LAB.md
 
 # Operating System files
 .DS_Store
