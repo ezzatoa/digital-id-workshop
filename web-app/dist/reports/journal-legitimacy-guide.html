@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>دليل فحص وموثوقية المجلات العلمية المحكّمة | جامعة طيبة</title>
+  <link rel="icon" type="image/png" href="/digital-id-workshop/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            cairo: ['Cairo', 'sans-serif'],
+            tajawal: ['Tajawal', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          },
+          colors: {
+            taibah: {
+              navy: '#0b1a48',
+              mediumNavy: '#122a6b',
+              emerald: '#00a887',
+              cyan: '#00c4d8',
+              gold: '#d97706',
+              slate: '#f8fafc'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+    }
+    .hero-pattern {
+      background-color: #0b1a48;
+      background-image: radial-gradient(#00a887 0.75px, transparent 0.75px), radial-gradient(#00c4d8 0.75px, #0b1a48 0.75px);
+      background-size: 30px 30px;
+      background-position: 0 0, 15px 15px;
+    }
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background-color: white !important;
+        color: black !important;
+      }
+      .print-shadow-none {
+        box-shadow: none !important;
+        border: 1px solid #e2e8f0 !important;
+      }
+      .page-break {
+        page-break-before: always;
+      }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col justify-between selection:bg-taibah-emerald selection:text-white">
+
+  <!-- Top Navigation Bar (No Print) -->
+  <header class="hero-pattern text-white border-b-4 border-taibah-emerald shadow-lg sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex flex-wrap items-center justify-between gap-4">
+      
+      <!-- Brand & Breadcrumb -->
+      <div class="flex items-center gap-3">
+        <a href="/" class="flex items-center gap-3 group">
+          <img src="/digital-id-workshop/logo.png" alt="شعار جامعة طيبة" class="w-11 h-11 rounded-xl object-contain bg-white/10 p-1 border border-white/20 shadow-inner group-hover:border-taibah-cyan transition">
+          <div>
+            <div class="text-[11px] text-taibah-cyan font-bold tracking-wider">جامعة طيبة • عمادة التطوير والجودة</div>
+            <div class="text-base sm:text-lg font-black font-tajawal text-white flex items-center gap-2">
+              <span>بوابة الأدلة والمراجع الأكاديمية</span>
+              <span class="text-xs bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 px-2 py-0.5 rounded-full font-sans">Research Brief #1</span>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-2.5 no-print">
+        <a href="/" class="bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm font-semibold px-3.5 py-2 rounded-xl border border-white/15 transition flex items-center gap-1.5">
+          <svg class="w-4 h-4 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+          </svg>
+          <span>العودة للبوابة الرئيسية</span>
+        </a>
+        <button onclick="window.print()" class="bg-taibah-emerald hover:bg-emerald-600 text-white text-xs sm:text-sm font-bold px-4 py-2 rounded-xl transition shadow-md flex items-center gap-1.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+          </svg>
+          <span>طباعة / حفظ PDF</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Report Banner & Hero Title -->
+  <div class="bg-gradient-to-b from-taibah-navy to-taibah-mediumNavy text-white py-12 px-4 sm:px-6 relative overflow-hidden border-b border-slate-700/60">
+    <div class="max-w-4xl mx-auto relative z-10">
+      
+      <!-- Tags and Metadata -->
+      <div class="flex flex-wrap items-center gap-2 mb-4">
+        <span class="bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 text-xs font-bold px-3 py-1 rounded-full">
+          دليل إرشادي استراتيجي
+        </span>
+        <span class="bg-white/10 text-slate-300 text-xs px-3 py-1 rounded-full">
+          النشر العلمي الرصين
+        </span>
+        <span class="bg-amber-500/20 text-amber-300 border border-amber-400/30 text-xs px-3 py-1 rounded-full">
+          مكافحة المجلات الوهمية والمقرصنة
+        </span>
+      </div>
+
+      <!-- Main Heading -->
+      <h1 class="text-2xl sm:text-4xl font-black font-tajawal leading-snug sm:leading-tight mb-4 text-white">
+        الخدمات والمنهجيات المعتمدة للتحقق من موثوقية وجودة المجلة العلمية المحكّمة
+      </h1>
+      
+      <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6 font-medium">
+        دليل تحليلي شامل لقواعد البيانات المفهرسة، كواشف المجلات المختطفة (Hijacked Journals)، ومصفوفة الفحص اليدوي لحماية الأبحاث من الوقوع في فخ النشر الوهمي والاستغلالي.
+      </p>
+
+      <!-- Author Card Info -->
+      <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-white/15 text-xs text-slate-300">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-taibah-emerald text-white flex items-center justify-center font-bold text-sm shadow">
+            ع
+          </div>
+          <div>
+            <div class="font-bold text-white text-sm">د. عزت عمر عبدالله أبوعزه</div>
+            <div>أستاذ مساعد بقسم تقنية الأشعة والتصوير الطبي — جامعة طيبة</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 text-slate-400">
+          <span>📅 التاريخ: ربيع الأول 1448هـ / سبتمبر 2026م</span>
+          <span>⏱️ وقت القراءة: 7 دقائق</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Main Body Content -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 py-10 flex-1 w-full space-y-10">
+
+    <!-- Section 0: Question Review & Editorial Audit Box -->
+    <section class="bg-white rounded-2xl p-6 sm:p-7 shadow-sm border border-slate-200">
+      <div class="flex items-center gap-2 text-taibah-navy font-bold font-tajawal text-lg mb-3">
+        <span class="text-xl">🔍</span>
+        <h2>السؤال محل الدراسة والتدقيق التحريري</h2>
+      </div>
+
+      <div class="bg-slate-50 rounded-xl p-4 border border-slate-200 space-y-3">
+        <div>
+          <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">
+            السؤال بعد المراجعة والتحسين اللغوي والأكاديمي (Reviewed & Corrected):
+          </div>
+          <div class="text-base sm:text-lg font-bold text-taibah-navy font-tajawal leading-snug">
+            "ما هي الخدمات الإلكترونية والطرق المختلفة المعتمدة للتحقق من موثوقية وجودة المجلة العلمية المحكّمة، وكيف يتجنب الباحث المجلات الاستغلالية والمقرصنة؟"
+          </div>
+          <div class="text-xs text-slate-600 mt-1 font-mono text-left dir-ltr">
+            "What are the online services and different methods that allow researchers to verify the legitimacy of an academic journal?"
+          </div>
+        </div>
+
+        <div class="pt-3 border-t border-slate-200 text-xs text-slate-600 space-y-1">
+          <div class="font-bold text-slate-700">ملاحظات التدقيق اللغوي والاصطلاحي على صيغة السؤال الأصلية:</div>
+          <ul class="list-disc list-inside space-y-0.5 text-slate-600">
+            <li><strong>تصحيح الإملاء والقواعد:</strong> تم تصحيح كلمة <code class="bg-slate-200 px-1 py-0.5 rounded text-red-600">legitmacy</code> إلى <code class="bg-slate-200 px-1 py-0.5 rounded text-emerald-700">legitimacy</code>، ومطابقة الفعل الجمع مع <code class="bg-slate-200 px-1 py-0.5 rounded text-emerald-700">different ways that allow</code>.</li>
+            <li><strong>الدقة المصطلحية:</strong> تحسين مصطلح <code class="bg-slate-200 px-1 py-0.5 rounded text-slate-700">publication journal</code> إلى <code class="bg-slate-200 px-1 py-0.5 rounded text-emerald-700">academic / scholarly peer-reviewed journal</code> ليتماشى مع الأعراف الأكاديمية العالمية.</li>
+            <li><strong>الشمولية المعرفية:</strong> توسيع السؤال ليشمل ليس فقط قواعد البيانات، بل أدوات كشف الاختطاف (Hijacked Journals) ومعايير الفحص اليدوي الصارمة.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 1: Executive Overview -->
+    <section class="bg-emerald-50/60 rounded-2xl p-6 sm:p-7 border border-emerald-200/80">
+      <h2 class="text-xl font-bold font-tajawal text-taibah-navy mb-2 flex items-center gap-2">
+        <span>🛡️</span> نظرة عامة: لماذا يعد التحقق من المجلة خطوة مصيرية؟
+      </h2>
+      <p class="text-sm text-slate-700 leading-relaxed text-justify mb-3">
+        في ظل التوسع الهائل في النشر الرقمي ذي الوصول المفتوح (Open Access)، ظهرت تجارة المجلات الاستغلالية (Predatory Publishing) والمجلات المقرصنة أو المختطفة (Hijacked Journals). النشر في هذه المجلات لا يؤدي فقط إلى خسارة رسوم النشر (APCs)، بل يعرض السمعة الأكاديمية للباحث للخطر، ويؤدي إلى رفض احتساب البحث في لجان الترقيات الأكاديمية ونماذج التقييم بجامعة طيبة والجامعات العالمية.
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-semibold pt-2">
+        <div class="bg-white p-3 rounded-xl border border-emerald-100 flex items-center gap-2 text-slate-700">
+          <span class="text-base">🚫</span> الحماية من المجلات الوهمية
+        </div>
+        <div class="bg-white p-3 rounded-xl border border-emerald-100 flex items-center gap-2 text-slate-700">
+          <span class="text-base">📑</span> ضمان الاعتماد في ملفات الترقية
+        </div>
+        <div class="bg-white p-3 rounded-xl border border-emerald-100 flex items-center gap-2 text-slate-700">
+          <span class="text-base">🌟</span> تعظيم الاستشهادات وتأثير البحث
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Authoritative Indexing Databases (Gold Standard) -->
+    <section class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="border-b border-slate-200 pb-4">
+        <span class="text-xs font-bold text-taibah-emerald uppercase tracking-wider">المحور الأول</span>
+        <h2 class="text-2xl font-bold font-tajawal text-taibah-navy mt-1">
+          قواعد البيانات والفهارس العالمية المعتمدة (المعيار الذهبي)
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-600 mt-1">
+          إذا كانت المجلة تزعم أنها مصنفة دولياً، يجب التحقق من وجودها الفعلي والمباشر داخل قواعد البيانات التالية:
+        </p>
+      </div>
+
+      <!-- Service 1: Web of Science Master Journal List -->
+      <div class="border border-slate-200 rounded-xl p-5 hover:border-taibah-emerald/60 transition group bg-slate-50/50">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+          <div class="flex items-center gap-2.5">
+            <span class="w-8 h-8 rounded-lg bg-red-100 text-red-700 font-bold flex items-center justify-center text-sm">W</span>
+            <h3 class="font-bold text-base sm:text-lg text-slate-900 group-hover:text-taibah-emerald transition">
+              1. قائمة المجلات الرئيسية لكلاريفيت (Clarivate Master Journal List - Web of Science)
+            </h3>
+          </div>
+          <a href="https://mjl.clarivate.com/" target="_blank" rel="noopener noreferrer" class="text-xs text-taibah-emerald font-bold hover:underline flex items-center gap-1 self-start sm:self-auto">
+            <span>زيارة البوابة الرسمية</span>
+            <span class="text-xs">↗</span>
+          </a>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-3">
+          تعد قاعدة <strong>Web of Science (Clarivate)</strong> المرجع الأسمى للتحقق من المجلات المصنفة عالمياً. تتيح لك البوابة البحث مجاناً بواسطة رقم الإيداع الدولي <strong>(ISSN)</strong> أو العنوان الدقيق للمجلة.
+        </p>
+        <div class="bg-white p-3 rounded-lg border border-slate-200 text-xs space-y-1.5 text-slate-700">
+          <div class="font-bold text-slate-800 flex items-center gap-1 text-emerald-700">
+            <span>✓</span> ما يجب التأكد منه:
+          </div>
+          <ul class="list-disc list-inside space-y-1 text-slate-600 pr-2">
+            <li>أن تكون المجلة مدرجة ضمن المجموعات الأساسية <strong>(Web of Science Core Collection)</strong>: إما (SCIE) للعلوم، أو (SSCI) للعلوم الاجتماعية، أو (AHCI) للفنون والإنسانيات، أو (ESCI) للمصادر الناشئة.</li>
+            <li><strong>تنبيه معامل التأثير (JIF):</strong> معامل التأثير الرسمي يصدر حصرياً من Clarivate عبر تقارير <em>Journal Citation Reports (JCR)</em>. أي مجلة تدعي معامل تأثير من جهة أخرى هي مجلة مضللة.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Service 2: Scopus Source List -->
+      <div class="border border-slate-200 rounded-xl p-5 hover:border-taibah-emerald/60 transition group bg-slate-50/50">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+          <div class="flex items-center gap-2.5">
+            <span class="w-8 h-8 rounded-lg bg-orange-100 text-orange-700 font-bold flex items-center justify-center text-sm">S</span>
+            <h3 class="font-bold text-base sm:text-lg text-slate-900 group-hover:text-taibah-emerald transition">
+              2. قائمة مصادر سكوبس الرسمية (Scopus Preview & Sources List - Elsevier)
+            </h3>
+          </div>
+          <a href="https://www.scopus.com/sources" target="_blank" rel="noopener noreferrer" class="text-xs text-orange-700 font-bold hover:underline flex items-center gap-1 self-start sm:self-auto">
+            <span>زيارة البوابة الرسمية</span>
+            <span class="text-xs">↗</span>
+          </a>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-3">
+          تتيح قاعدة سكوبس فحص المجلات مجاناً عبر صفحة <em>Scopus Sources</em> للتأكد من حالة الفهرسة الحالية، ومعامل <strong>CiteScore</strong>، والربيع الذي تنتمي إليه المجلة (Q1, Q2, Q3, Q4).
+        </p>
+        <div class="bg-amber-50 p-3 rounded-lg border border-amber-200 text-xs space-y-1.5 text-amber-900">
+          <div class="font-bold flex items-center gap-1 text-amber-800">
+            <span>⚠️</span> قاعدة ذهبية (فحص المجلات المستبعدة من Scopus):
+          </div>
+          <p class="leading-relaxed">
+            تقوم سكوبس بتحديث شهري لقائمة المجلات المستبعدة <strong>(Discontinued Titles)</strong> بسبب تدني المعايير أو الممارسات المشبوهة. تأكد دائماً أن المجلة ما تزال "مستمرة" (Coverage: from 20xx to Present) وليست ملغاة حديثاً.
+          </p>
+        </div>
+      </div>
+
+      <!-- Service 3: DOAJ -->
+      <div class="border border-slate-200 rounded-xl p-5 hover:border-taibah-emerald/60 transition group bg-slate-50/50">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+          <div class="flex items-center gap-2.5">
+            <span class="w-8 h-8 rounded-lg bg-teal-100 text-teal-800 font-bold flex items-center justify-center text-sm">D</span>
+            <h3 class="font-bold text-base sm:text-lg text-slate-900 group-hover:text-taibah-emerald transition">
+              3. دليل دوريات الوصول المفتوح (Directory of Open Access Journals - DOAJ)
+            </h3>
+          </div>
+          <a href="https://doaj.org/" target="_blank" rel="noopener noreferrer" class="text-xs text-teal-700 font-bold hover:underline flex items-center gap-1 self-start sm:self-auto">
+            <span>زيارة البوابة الرسمية</span>
+            <span class="text-xs">↗</span>
+          </a>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-3">
+          إذا كانت المجلة تتبع نظام الوصول المفتوح (Open Access)، فإن <strong>DOAJ</strong> هو المعيار الدولي الموثوق للفصل بين المجلات الرصينة والمجلات الوهمية التي تسعى فقط لجني الرسوم. تطبق DOAJ شروطاً صارمة لمراجعة الأقران وتراخيص المشاع الإبداعي (Creative Commons).
+        </p>
+        <div class="bg-white p-3 rounded-lg border border-slate-200 text-xs text-slate-600">
+          <strong>مؤشر إضافي:</strong> حصول المجلة على "ختم DOAJ" (DOAJ Seal) يعني التزامها بأعلى معايير الشفافية وحفظ الأرشفة الرقمية طويلة المدى.
+        </div>
+      </div>
+
+      <!-- Service 4: NLM Catalog & PubMed -->
+      <div class="border border-slate-200 rounded-xl p-5 hover:border-taibah-emerald/60 transition group bg-slate-50/50">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+          <div class="flex items-center gap-2.5">
+            <span class="w-8 h-8 rounded-lg bg-blue-100 text-blue-800 font-bold flex items-center justify-center text-sm">M</span>
+            <h3 class="font-bold text-base sm:text-lg text-slate-900 group-hover:text-taibah-emerald transition">
+              4. فهرس المكتبة الوطنية للطب (NLM Catalog - MEDLINE / PubMed)
+            </h3>
+          </div>
+          <a href="https://www.ncbi.nlm.nih.gov/nlmcatalog" target="_blank" rel="noopener noreferrer" class="text-xs text-blue-700 font-bold hover:underline flex items-center gap-1 self-start sm:self-auto">
+            <span>زيارة البوابة الرسمية</span>
+            <span class="text-xs">↗</span>
+          </a>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-3">
+          للباحثين في التخصصات الصحية والطبية والعلوم الحيوية، يوفر <strong>NLM Catalog</strong> التحقق الدقيق من فهرسة المجلة في <strong>MEDLINE</strong>.
+        </p>
+        <div class="bg-rose-50 p-3 rounded-lg border border-rose-200 text-xs text-rose-900 space-y-1">
+          <div class="font-bold">⚠️ خدعة شائعة: الفرق بين PubMed Central و MEDLINE:</div>
+          <p class="leading-relaxed">
+            كثير من المجلات الوهمية تدعي أنها "مفهرسة في بوبميد (Indexed in PubMed)". الحقيقة أن وجود أبحاث للمجلة في <em>PubMed Central (PMC)</em> قد يكون نتيجة إلزام الباحث الممول بإيداع بحثه، ولا يعني إطلاقاً أن المجلة مفهرسة كلياً في <strong>MEDLINE</strong>. ابحث عن عبارة: <code class="bg-white px-1 py-0.5 rounded font-mono text-rose-800">"Current Indexing Status: Currently indexed for MEDLINE"</code>.
+          </p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Section 3: Specialized Anti-Predatory Tools & Hijacked Checkers -->
+    <section class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="border-b border-slate-200 pb-4">
+        <span class="text-xs font-bold text-taibah-emerald uppercase tracking-wider">المحور الثاني</span>
+        <h2 class="text-2xl font-bold font-tajawal text-taibah-navy mt-1">
+          أدوات متخصصة لرصد المجلات المختطفة وقوائم النزاهة الأكاديمية
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-600 mt-1">
+          خدمات احترافية متخصصة في كشف عمليات التزوير وانتحال هوية المجلات الشهيرة:
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        
+        <!-- Tool 1: Think Check Submit -->
+        <div class="border border-slate-200 rounded-xl p-4 bg-slate-50 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="font-bold text-sm text-taibah-navy">فكر. تحقق. أرسل (Think. Check. Submit)</span>
+              <span class="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded">مبادرة عالمية</span>
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed mb-3">
+              مبادرة دولية مدعومة من كبرى دور النشر والجامعات. توفر شجرة قرارات وقائمة فحص تفاعلية لمعرفة ما إذا كانت المجلة تستحق إرسال مسودة بحثك إليها.
+            </p>
+          </div>
+          <a href="https://thinkchecksubmit.org/" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-taibah-emerald hover:underline flex items-center gap-1">
+            <span>زيارة Think. Check. Submit</span> ↗
+          </a>
+        </div>
+
+        <!-- Tool 2: Retraction Watch Hijacked Journal Checker -->
+        <div class="border border-red-200 rounded-xl p-4 bg-red-50/40 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="font-bold text-sm text-red-900">كاشف المجلات المختطفة (Hijacked Journal Checker)</span>
+              <span class="text-[10px] bg-red-100 text-red-800 font-bold px-2 py-0.5 rounded">Retraction Watch</span>
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed mb-3">
+              قاعدة بيانات ترصد أكثر من 200 مجلة علمية تم "اختطافها" أو استنساخ موقع إلكتروني مزيف لها بعد شراء نطاقات منتهية، حيث يتم سرقة اسم مجلة مرموقة ونشر أبحاث وهمية عليها.
+            </p>
+          </div>
+          <a href="https://retractionwatch.com/the-retraction-watch-hijacked-journal-checker/" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-red-700 hover:underline flex items-center gap-1">
+            <span>فحص المجلات المختطفة</span> ↗
+          </a>
+        </div>
+
+        <!-- Tool 3: Cabells Predatory Reports -->
+        <div class="border border-slate-200 rounded-xl p-4 bg-slate-50 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="font-bold text-sm text-taibah-navy">تقارير كابيلز (Cabells Journalytics & Predatory Reports)</span>
+              <span class="text-[10px] bg-blue-100 text-blue-800 font-bold px-2 py-0.5 rounded">مكتبات الجامعات</span>
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed mb-3">
+              خدمة مدفوعة تعتمد عليها معظم عمادات البحث العلمي بالجامعات، تقوم بتقييم المجلات بناءً على أكثر من 70 مؤشراً سلوكياً استغلالياً وتوفر قائمة بيضاء وسوداء مفصلة.
+            </p>
+          </div>
+          <a href="https://www.cabells.com/" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-taibah-emerald hover:underline flex items-center gap-1">
+            <span>بوابة Cabells</span> ↗
+          </a>
+        </div>
+
+        <!-- Tool 4: COPE & OASPA -->
+        <div class="border border-slate-200 rounded-xl p-4 bg-slate-50 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="font-bold text-sm text-taibah-navy">عضوية جمعيات أخلاقيات النشر (COPE & OASPA)</span>
+              <span class="text-[10px] bg-purple-100 text-purple-800 font-bold px-2 py-0.5 rounded">تحقق رسمي</span>
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed mb-3">
+              فحص سجل الأعضاء في <em>Committee on Publication Ethics (COPE)</em> و <em>OASPA</em>. تضع بعض المجلات شعار COPE دون إذن، لذا يجب دائماً مراجعة دليل الأعضاء في الموقع الرسمي لـ COPE.
+            </p>
+          </div>
+          <a href="https://publicationethics.org/members" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-taibah-emerald hover:underline flex items-center gap-1">
+            <span>دليل أعضاء COPE الرسمي</span> ↗
+          </a>
+        </div>
+
+      </div>
+
+      <!-- ISSN Portal Quick Box -->
+      <div class="bg-slate-100 rounded-xl p-4 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+        <div>
+          <span class="font-bold text-slate-900">بوابة الرقم التسلسلي الدولي (The ISSN Portal / ROAD):</span>
+          <span class="text-slate-600 mr-1">تتيح لك التأكد من أن رقم ISSN يتبع بالفعل للناشر والدولة والاسم المطابق للمجلة الحقيقية.</span>
+        </div>
+        <a href="https://portal.issn.org/" target="_blank" rel="noopener noreferrer" class="text-taibah-emerald font-bold hover:underline shrink-0">
+          portal.issn.org ↗
+        </a>
+      </div>
+
+    </section>
+
+    <!-- Section 4: Authentic vs Fake Metrics Matrix -->
+    <section class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-5">
+      <div class="border-b border-slate-200 pb-4">
+        <span class="text-xs font-bold text-amber-600 uppercase tracking-wider">المحور الثالث</span>
+        <h2 class="text-2xl font-bold font-tajawal text-taibah-navy mt-1">
+          مصفوفة التمييز: المؤشرات المعتمدة مقابل المؤشرات الوهمية والمضللة
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-600 mt-1">
+          تتعمد المجلات الاستغلالية ابتكار أسماء مؤشرات تطابق نغمياً معامل التأثير الحقيقي لخداع الباحثين:
+        </p>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-right text-xs sm:text-sm border border-slate-200 rounded-xl overflow-hidden">
+          <thead class="bg-slate-100 text-slate-800 font-bold border-b border-slate-200">
+            <tr>
+              <th class="p-3.5">المؤشر الأكاديمي الحقيقي المعتمد</th>
+              <th class="p-3.5">الجهة الرسمية المانحة</th>
+              <th class="p-3.5 text-rose-700">المؤشرات الوهمية والمضللة (علامات حمراء 🚩)</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200 text-slate-700">
+            <tr class="bg-white hover:bg-slate-50/80 transition">
+              <td class="p-3.5 font-bold text-taibah-navy">Journal Impact Factor (JIF)</td>
+              <td class="p-3.5">Clarivate Analytics (JCR)</td>
+              <td class="p-3.5 text-rose-700 font-medium">
+                Global Impact Factor (GIF), Universal Impact Factor (UIF), General Impact Factor, International Impact Factor Services (IIFS)
+              </td>
+            </tr>
+            <tr class="bg-slate-50/50 hover:bg-slate-50/80 transition">
+              <td class="p-3.5 font-bold text-taibah-navy">Scopus CiteScore</td>
+              <td class="p-3.5">Elsevier / Scopus</td>
+              <td class="p-3.5 text-rose-700 font-medium">
+                Cosmos Impact Factor, Scientific Journal Impact Factor (SJIF), CiteFactor
+              </td>
+            </tr>
+            <tr class="bg-white hover:bg-slate-50/80 transition">
+              <td class="p-3.5 font-bold text-taibah-navy">SCImago Journal Rank (SJR)</td>
+              <td class="p-3.5">SCImago Lab (بيانات Scopus)</td>
+              <td class="p-3.5 text-rose-700 font-medium">
+                Index Copernicus Value (ICV) عند استخدامه كبديل لمعامل التأثير
+              </td>
+            </tr>
+            <tr class="bg-slate-50/50 hover:bg-slate-50/80 transition">
+              <td class="p-3.5 font-bold text-taibah-navy">SNIP & H-Index الموثق</td>
+              <td class="p-3.5">CWTS Leiden / Scopus</td>
+              <td class="p-3.5 text-rose-700 font-medium">
+                أي شهادة أو شارة رقمية (Badge) تمنحها مواقع تجارية غير أكاديمية مجهولة
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-red-50 border-r-4 border-red-500 p-4 rounded-xl text-xs text-red-900 leading-relaxed">
+        <strong>قاعدة حاسمة:</strong> إذا ذكرت المجلة في موقعها أنها تملك "معامل تأثير (Impact Factor = 7.8)" دون أن تكون مفهرسة برقم ISSN داخل Clarivate Master Journal List، فإن هذا الرقم وهمي ومختلق 100%.
+      </div>
+    </section>
+
+    <!-- Section 5: Systematic Step-by-Step Due Diligence Protocol -->
+    <section class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="border-b border-slate-200 pb-4">
+        <span class="text-xs font-bold text-taibah-emerald uppercase tracking-wider">المحور الرابع</span>
+        <h2 class="text-2xl font-bold font-tajawal text-taibah-navy mt-1">
+          بروتوكول الفحص والتحقق اليدوي خطوة بخطوة (Due Diligence Checklist)
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-600 mt-1">
+          خمس خطوات عملية إلزامية قبل تسليم أي مخطوطة علمية أو دفع أي رسوم:
+        </p>
+      </div>
+
+      <div class="space-y-4">
+        
+        <!-- Step 1 -->
+        <div class="flex items-start gap-4 p-4 rounded-xl bg-slate-50 border border-slate-200">
+          <div class="w-8 h-8 rounded-full bg-taibah-navy text-white flex items-center justify-center font-bold text-sm shrink-0 mt-0.5">
+            1
+          </div>
+          <div class="space-y-1">
+            <h3 class="font-bold text-sm sm:text-base text-slate-900">
+              فحص هيئة التحرير (Editorial Board Audit):
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              اختر عشوائياً اسمين أو ثلاثة من كبار العلماء المدرجين في هيئة تحرير المجلة، وادخل على صفحاتهم الرسمية في مواقع جامعاتهم أو حساباتهم في ORCID و LinkedIn. هل يذكرون في سيرهم الذاتية أنهم أعضاء تحرير في هذه المجلة؟ تقوم المجلات الوهمية بوضع أسماء علماء مرموقين دون علمهم أو موافقتهم.
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="flex items-start gap-4 p-4 rounded-xl bg-slate-50 border border-slate-200">
+          <div class="w-8 h-8 rounded-full bg-taibah-navy text-white flex items-center justify-center font-bold text-sm shrink-0 mt-0.5">
+            2
+          </div>
+          <div class="space-y-1">
+            <h3 class="font-bold text-sm sm:text-base text-slate-900">
+              زمن التحكيم المزعوم (Peer Review Turnaround):
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              وعود "القبول النهائي خلال 48 إلى 72 ساعة" أو "النشر خلال أسبوع" هي العلامة التجارية الأبرز للمجلات الاستغلالية. التحكيم الأكاديمي الحقيقي الرصين يستغرق عادة من 4 إلى 12 أسبوعاً لتوزيع البحث على محكمين مستقلين وتلقي الملاحظات.
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="flex items-start gap-4 p-4 rounded-xl bg-slate-50 border border-slate-200">
+          <div class="w-8 h-8 rounded-full bg-taibah-navy text-white flex items-center justify-center font-bold text-sm shrink-0 mt-0.5">
+            3
+          </div>
+          <div class="space-y-1">
+            <h3 class="font-bold text-sm sm:text-base text-slate-900">
+              شفافية رسوم معالجة المقالات (APC Transparency):
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              يجب أن تكون رسوم النشر معلنة بوضوح تام في صفحة مخصصة قبل الإرسال. المجلات الاحتيالية لا تذكر الرسوم إطلاقاً أو تزعم أن النشر مجاني، حتى يتم قبول البحث، ثم تفاجئ الباحث بطلب مئات الدولارات وترفض سحب البحث إلا بعد الدفع.
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="flex items-start gap-4 p-4 rounded-xl bg-slate-50 border border-slate-200">
+          <div class="w-8 h-8 rounded-full bg-taibah-navy text-white flex items-center justify-center font-bold text-sm shrink-0 mt-0.5">
+            4
+          </div>
+          <div class="space-y-1">
+            <h3 class="font-bold text-sm sm:text-base text-slate-900">
+              بيانات التواصل والمقر الجغرافي للناشر:
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              المجلات الرصينة تمتلك عناوين بريد إلكتروني تتبع نطاق المجلة أو دار النشر المعتمدة. استخدام بريد إلكتروني تجاري مجاني مثل <code class="bg-slate-200 px-1 py-0.5 rounded text-slate-700">@gmail.com</code> أو <code class="bg-slate-200 px-1 py-0.5 rounded text-slate-700">@yahoo.com</code> في التواصل الرسمي هو مؤشر خطورة شديد. كذلك فحص العنوان الجغرافي عبر خرائط Google لمعرفة ما إذا كان يقع في مبنى سكني وهمي أو صندوق بريد فقط.
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="flex items-start gap-4 p-4 rounded-xl bg-slate-50 border border-slate-200">
+          <div class="w-8 h-8 rounded-full bg-taibah-navy text-white flex items-center justify-center font-bold text-sm shrink-0 mt-0.5">
+            5
+          </div>
+          <div class="space-y-1">
+            <h3 class="font-bold text-sm sm:text-base text-slate-900">
+              فحص عينات عشوائية من الأبحاث المنشورة في آخر عدد:
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              افتح 2 إلى 3 مقالات من العدد الأخير للمجلة. هل تتطابق المقالات مع نطاق المجلة المصرح به؟ هل هناك تدقيق لغوي وتنسيق علمي سليم؟ هل المنهجيات والنتائج مقنعة أم أنها أبحاث سطحية أو مكررة تم قبولها دون أي تمحيص؟
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 6: Interactive Journal Legitimacy Scorecard (Client-side interactive widget) -->
+    <section class="bg-gradient-to-br from-slate-900 to-taibah-navy text-white rounded-2xl p-6 sm:p-8 shadow-xl border border-slate-700 no-print">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-700/80 pb-4 mb-6">
+        <div>
+          <span class="text-xs text-taibah-cyan font-bold tracking-wider">أداة تفاعلية سريعة</span>
+          <h2 class="text-xl sm:text-2xl font-bold font-tajawal text-white mt-0.5">
+            مقياس التحقق الذاتي لموثوقية المجلة (Legitimacy Scorecard)
+          </h2>
+          <p class="text-xs text-slate-300 mt-1">حدد المعايير المنطبقة على المجلة التي تنوي النشر فيها للحصول على تقييم فوري لمستوى الأمان:</p>
+        </div>
+        <div id="scoreBadge" class="bg-emerald-500/20 border border-emerald-400 text-emerald-300 px-4 py-2 rounded-xl text-center self-start sm:self-auto shrink-0">
+          <div class="text-[10px] uppercase font-bold text-slate-300">درجة الموثوقية</div>
+          <div id="scoreValue" class="text-2xl font-black font-mono">0%</div>
+        </div>
+      </div>
+
+      <div class="space-y-3" id="checklistContainer">
+        <label class="flex items-center gap-3 bg-white/5 hover:bg-white/10 p-3 rounded-xl border border-white/10 cursor-pointer transition text-xs sm:text-sm">
+          <input type="checkbox" class="score-check w-4 h-4 accent-taibah-emerald rounded" value="25" onchange="calculateScore()">
+          <span>مفهرسة رسمياً ومستمرة داخل <strong>Clarivate Master Journal List</strong> أو <strong>Scopus Source List</strong>.</span>
+        </label>
+        
+        <label class="flex items-center gap-3 bg-white/5 hover:bg-white/10 p-3 rounded-xl border border-white/10 cursor-pointer transition text-xs sm:text-sm">
+          <input type="checkbox" class="score-check w-4 h-4 accent-taibah-emerald rounded" value="20" onchange="calculateScore()">
+          <span>إذا كانت مفتوحة (OA)، فهي مدرجة في دليل <strong>DOAJ</strong> وتحمل شروط ترخيص واضحة.</span>
+        </label>
+
+        <label class="flex items-center gap-3 bg-white/5 hover:bg-white/10 p-3 rounded-xl border border-white/10 cursor-pointer transition text-xs sm:text-sm">
+          <input type="checkbox" class="score-check w-4 h-4 accent-taibah-emerald rounded" value="15" onchange="calculateScore()">
+          <span>أعضاء هيئة التحرير معتمدون وموجودون بالفعل في صفحات جامعاتهم الرسمية.</span>
+        </label>
+
+        <label class="flex items-center gap-3 bg-white/5 hover:bg-white/10 p-3 rounded-xl border border-white/10 cursor-pointer transition text-xs sm:text-sm">
+          <input type="checkbox" class="score-check w-4 h-4 accent-taibah-emerald rounded" value="15" onchange="calculateScore()">
+          <span>رسوم النشر (APCs) معلنة وواضحة مسبقاً، ولا يوجد ابتزاز مالي بعد القبول.</span>
+        </label>
+
+        <label class="flex items-center gap-3 bg-white/5 hover:bg-white/10 p-3 rounded-xl border border-white/10 cursor-pointer transition text-xs sm:text-sm">
+          <input type="checkbox" class="score-check w-4 h-4 accent-taibah-emerald rounded" value="10" onchange="calculateScore()">
+          <span>مدة التحكيم الأكاديمي واقعية ومحكمة (ليست وعوداً بالقبول خلال 48-72 ساعة).</span>
+        </label>
+
+        <label class="flex items-center gap-3 bg-white/5 hover:bg-white/10 p-3 rounded-xl border border-white/10 cursor-pointer transition text-xs sm:text-sm">
+          <input type="checkbox" class="score-check w-4 h-4 accent-taibah-emerald rounded" value="15" onchange="calculateScore()">
+          <span>تم التأكد من عدم وجود المجلة في <strong>Retraction Watch Hijacked Journal Checker</strong> والنطاق الإلكتروني سليم.</span>
+        </label>
+      </div>
+
+      <!-- Verdict Banner -->
+      <div id="verdictBox" class="mt-5 p-4 rounded-xl bg-white/10 border border-white/15 text-xs text-slate-300 flex items-center gap-3">
+        <span id="verdictIcon" class="text-2xl">📋</span>
+        <div id="verdictText">
+          يرجى تحديد المعايير التي تحققت منها في المجلة لمعرفة النتيجة والتوصية الإرشادية.
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 7: Quick Links Directory -->
+    <section class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+      <div class="border-b border-slate-200 pb-4 mb-5">
+        <span class="text-xs font-bold text-taibah-emerald uppercase tracking-wider">دليل الروابط المباشرة</span>
+        <h2 class="text-xl font-bold font-tajawal text-taibah-navy mt-1">
+          بوابات الفحص السريع ومحركات الاستعلام الرسمية
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+        <a href="https://mjl.clarivate.com/" target="_blank" rel="noopener noreferrer" class="p-3 bg-slate-50 hover:bg-slate-100 rounded-xl border border-slate-200 text-center transition block">
+          <div class="font-bold text-slate-900 mb-0.5">Clarivate MJL</div>
+          <div class="text-[11px] text-slate-500 font-mono">Web of Science</div>
+        </a>
+        <a href="https://www.scopus.com/sources" target="_blank" rel="noopener noreferrer" class="p-3 bg-slate-50 hover:bg-slate-100 rounded-xl border border-slate-200 text-center transition block">
+          <div class="font-bold text-slate-900 mb-0.5">Scopus Sources</div>
+          <div class="text-[11px] text-slate-500 font-mono">CiteScore & Q1-Q4</div>
+        </a>
+        <a href="https://doaj.org/" target="_blank" rel="noopener noreferrer" class="p-3 bg-slate-50 hover:bg-slate-100 rounded-xl border border-slate-200 text-center transition block">
+          <div class="font-bold text-slate-900 mb-0.5">DOAJ Directory</div>
+          <div class="text-[11px] text-slate-500 font-mono">Open Access</div>
+        </a>
+        <a href="https://retractionwatch.com/the-retraction-watch-hijacked-journal-checker/" target="_blank" rel="noopener noreferrer" class="p-3 bg-slate-50 hover:bg-slate-100 rounded-xl border border-slate-200 text-center transition block">
+          <div class="font-bold text-slate-900 mb-0.5">Hijacked Checker</div>
+          <div class="text-[11px] text-slate-500 font-mono">المجلات المقرصنة</div>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Interactive Scorecard JS Logic -->
+  <script>
+    function calculateScore() {
+      const checkboxes = document.querySelectorAll('.score-check');
+      let score = 0;
+      checkboxes.forEach(cb => {
+        if (cb.checked) {
+          score += parseInt(cb.value, 10);
+        }
+      });
+
+      const scoreValue = document.getElementById('scoreValue');
+      const scoreBadge = document.getElementById('scoreBadge');
+      const verdictBox = document.getElementById('verdictBox');
+      const verdictIcon = document.getElementById('verdictIcon');
+      const verdictText = document.getElementById('verdictText');
+
+      scoreValue.textContent = score + '%';
+
+      if (score === 100) {
+        scoreBadge.className = 'bg-emerald-500/20 border border-emerald-400 text-emerald-300 px-4 py-2 rounded-xl text-center self-start sm:self-auto shrink-0';
+        verdictBox.className = 'mt-5 p-4 rounded-xl bg-emerald-950/60 border border-emerald-500/40 text-xs text-emerald-200 flex items-center gap-3';
+        verdictIcon.textContent = '✅';
+        verdictText.innerHTML = '<strong>مجلة ذات موثوقية عالية جداً:</strong> استوفت المجلة جميع المعايير الدولية الصارمة وقواعد البيانات المعتمدة. يمكنك المتابعة في إرسال المخطوطة بثقة.';
+      } else if (score >= 60) {
+        scoreBadge.className = 'bg-amber-500/20 border border-amber-400 text-amber-300 px-4 py-2 rounded-xl text-center self-start sm:self-auto shrink-0';
+        verdictBox.className = 'mt-5 p-4 rounded-xl bg-amber-950/60 border border-amber-500/40 text-xs text-amber-200 flex items-center gap-3';
+        verdictIcon.textContent = '⚠️';
+        verdictText.innerHTML = '<strong>مستوى موثوقية متوسط (يتطلب حذراً):</strong> استوفت المجلة بعض المعايير ولكن هناك عناصر لم يتم تأكيدها بعد. يُوصى بالتحقق من لجان الترقية في كليتك قبل الإرسال.';
+      } else if (score > 0) {
+        scoreBadge.className = 'bg-rose-500/20 border border-rose-400 text-rose-300 px-4 py-2 rounded-xl text-center self-start sm:self-auto shrink-0';
+        verdictBox.className = 'mt-5 p-4 rounded-xl bg-rose-950/60 border border-rose-500/40 text-xs text-rose-200 flex items-center gap-3';
+        verdictIcon.textContent = '🚫';
+        verdictText.innerHTML = '<strong>مستوى خطورة مرتفع جداً:</strong> تفتقر المجلة لمعظم معايير النشر الرصين. هناك احتمال كبير أن تكون مجلة استغلالية أو وهمية. تجنب إرسال مسودة بحثك إليها.';
+      } else {
+        scoreBadge.className = 'bg-slate-700 border border-slate-600 text-slate-300 px-4 py-2 rounded-xl text-center self-start sm:self-auto shrink-0';
+        verdictBox.className = 'mt-5 p-4 rounded-xl bg-white/10 border border-white/15 text-xs text-slate-300 flex items-center gap-3';
+        verdictIcon.textContent = '📋';
+        verdictText.innerHTML = 'يرجى تحديد المعايير التي تحققت منها في المجلة لمعرفة النتيجة والتوصية الإرشادية.';
+      }
+    }
+  </script>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 border-t border-slate-800 py-8 text-xs text-center">
+    <div class="max-w-4xl mx-auto px-4 space-y-3">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-3 text-slate-400">
+        <div>
+          جامعة طيبة — عمادة التطوير والجودة — وحدة التطوير والبحث العلمي
+        </div>
+        <div>
+          إعداد وتطوير: <span class="text-white font-semibold">د. عزت عمر عبدالله أبوعزه</span> © 1448هـ / 2026م
+        </div>
+      </div>
+      <div class="text-[11px] text-slate-500 pt-2 border-t border-slate-800">
+        هذا الدليل الاسترشادي جزء من مخرجات ومنظومة ورشة "الهوية الرقمية الأكاديمية والحضور البحثي العالمي" بجامعة طيبة.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

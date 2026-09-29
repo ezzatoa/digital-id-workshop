@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>بوابة ورش العمل الأكاديمية | جامعة طيبة</title>
+  <title>بوابة ورش العمل والخدمات الأكاديمية | جامعة طيبة</title>
   <link rel="icon" type="image/png" href="/digital-id-workshop/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -15,7 +15,8 @@
         extend: {
           fontFamily: {
             cairo: ['Cairo', 'sans-serif'],
-            tajawal: ['Tajawal', 'sans-serif']
+            tajawal: ['Tajawal', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
           },
           colors: {
             taibah: {
@@ -43,176 +44,790 @@
     }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col justify-between">
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col justify-between selection:bg-taibah-emerald selection:text-white">
 
-  <!-- Header & Hero Section -->
+  <!-- Top Navigation & Institutional Branding -->
   <header class="hero-pattern text-white shadow-xl relative overflow-hidden border-b-4 border-taibah-emerald">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12 relative z-10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-10 relative z-10">
+      
+      <!-- Top Bar: Logo, Title, and Presenter Credential -->
       <div class="flex flex-col md:flex-row items-center justify-between gap-6">
         
         <!-- Institution Branding -->
         <div class="flex items-center gap-4 text-right">
           <img src="/digital-id-workshop/logo.png" alt="شعار ورشة العمل" class="w-16 h-16 rounded-2xl object-contain bg-white/10 backdrop-blur-md border border-white/20 p-1.5 shadow-inner">
           <div>
-            <div class="text-taibah-cyan text-sm font-semibold tracking-wide">جامعة طيبة • عمادة التطوير والجودة</div>
-            <h1 class="text-2xl sm:text-3xl font-black font-tajawal mt-1 text-white">بوابة ورش العمل الأكاديمية والتدريبية</h1>
-            <p class="text-slate-300 text-xs sm:text-sm mt-0.5">المنصة التفاعلية المعتمدة لبرامج التدريب والتطوير الأكاديمي</p>
+            <div class="text-taibah-cyan text-sm font-semibold tracking-wide flex items-center gap-2">
+              <span>جامعة طيبة</span>
+              <span>•</span>
+              <span>عمادة التطوير والجودة 1448هـ</span>
+            </div>
+            <h1 class="text-2xl sm:text-3xl font-black font-tajawal mt-1 text-white">بوابة ورش العمل والخدمات الأكاديمية</h1>
+            <p class="text-slate-300 text-xs sm:text-sm mt-0.5">المنصة التفاعلية المعتمدة للبرامج التدريبية ومراجع البحث والتعليم الجامعي</p>
           </div>
         </div>
 
         <!-- Instructor Credential Badge -->
-        <div class="bg-white/10 backdrop-blur-md border border-white/15 rounded-xl px-5 py-3 text-right">
-          <div class="text-xs text-taibah-cyan font-medium">إعداد وتقديم:</div>
+        <div class="bg-white/10 backdrop-blur-md border border-white/15 rounded-xl px-5 py-3 text-right shrink-0">
+          <div class="text-xs text-taibah-cyan font-medium">إعداد وتطوير:</div>
           <div class="text-sm font-bold text-white">د. عزت عمر عبدالله أبوعزه</div>
-          <div class="text-xs text-slate-300">أستاذ مساعد في قسم تقنية الأشعة - جامعة طيبة</div>
+          <div class="text-xs text-slate-300">أستاذ مساعد في قسم تقنية الأشعة والتصوير الطبي — جامعة طيبة</div>
         </div>
 
       </div>
+
+      <!-- Quick Portal Jump Links -->
+      <div class="flex flex-wrap items-center gap-2 pt-6 mt-6 border-t border-white/15 text-xs font-semibold">
+        <span class="text-slate-400 ml-2">أقسام البوابة السريعة:</span>
+        <a href="#workshops" class="bg-white/15 hover:bg-white/25 text-white px-3 py-1.5 rounded-lg border border-white/15 transition flex items-center gap-1.5">
+          <span>📚</span>
+          <span>ورش العمل التدريبية المتاحة</span>
+        </a>
+        <a href="#academic-services" class="bg-taibah-emerald hover:bg-emerald-600 text-white px-3 py-1.5 rounded-lg transition shadow-sm flex items-center gap-1.5">
+          <span>🌐</span>
+          <span>خدمات ومراجع البحث العلمي والتدريس</span>
+        </a>
+        <a href="#featured-report" class="bg-amber-500/20 hover:bg-amber-500/30 text-amber-200 border border-amber-400/40 px-3 py-1.5 rounded-lg transition flex items-center gap-1.5">
+          <span>📑</span>
+          <span>دليل فحص موثوقية المجلات (جديد)</span>
+        </a>
+      </div>
+
     </div>
   </header>
 
-  <!-- Main Content: Available Workshops -->
-  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-12 flex-1 w-full">
+  <!-- Main Container -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-12 flex-1 w-full space-y-16">
     
-    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 border-b border-slate-200 pb-4">
-      <div>
-        <h2 class="text-2xl font-bold font-tajawal text-taibah-navy flex items-center gap-2">
-          <span>📚</span> ورش العمل المتاحة للتدريب (Available Workshops)
-        </h2>
-        <p class="text-sm text-slate-600 mt-1">اختر الورشة التدريبية للانتقال مباشرة إلى المنظومة التفاعلية ومختبر الذكاء الاصطناعي</p>
-      </div>
-      <div class="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200 text-emerald-700 px-3 py-1.5 rounded-full text-xs font-semibold">
-        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
-        ورشة نشطة حالياً (1 متاحة)
-      </div>
-    </div>
-
-    <!-- Workshop Cards Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <!-- ========================================== -->
+    <!-- SECTION 1: AVAILABLE WORKSHOPS READY TO DELIVER -->
+    <!-- ========================================== -->
+    <section id="workshops" class="space-y-8">
       
-      <!-- Workshop 1: Digital Identity (Active) -->
-      <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-slate-200 overflow-hidden flex flex-col justify-between group">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-4">
         <div>
-          <!-- Card Header Banner -->
-          <div class="bg-gradient-to-l from-taibah-navy to-taibah-mediumNavy text-white p-6 relative">
-            <div class="flex items-start justify-between gap-3">
-              <span class="bg-taibah-emerald/90 text-white text-xs font-bold px-3 py-1 rounded-full shadow-sm">
-                متاح الآن • Active
-              </span>
-              <span class="text-slate-300 text-xs bg-white/10 px-2.5 py-1 rounded-md">90 دقيقة تفاعلية</span>
+          <h2 class="text-2xl font-bold font-tajawal text-taibah-navy flex items-center gap-2.5">
+            <span class="p-1.5 bg-taibah-navy text-white rounded-lg text-lg">📚</span>
+            <span>ورش العمل الأكاديمية الجاهزة للتقديم (Available Workshops)</span>
+          </h2>
+          <p class="text-sm text-slate-600 mt-1">اختر الورشة التدريبية للانتقال مباشرة إلى المنظومة التفاعلية ومختبر الذكاء الاصطناعي</p>
+        </div>
+        <div class="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200 text-emerald-700 px-3.5 py-1.5 rounded-full text-xs font-bold">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
+          ورشة نشطة حالياً (1 متاحة للتدريب)
+        </div>
+      </div>
+
+      <!-- Workshop Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- Workshop 1: Digital Identity (Active) -->
+        <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-slate-200 overflow-hidden flex flex-col justify-between group">
+          <div>
+            <!-- Card Header Banner -->
+            <div class="bg-gradient-to-l from-taibah-navy to-taibah-mediumNavy text-white p-6 relative">
+              <div class="flex items-start justify-between gap-3">
+                <span class="bg-taibah-emerald/90 text-white text-xs font-bold px-3 py-1 rounded-full shadow-sm">
+                  متاح الآن • Active
+                </span>
+                <span class="text-slate-300 text-xs bg-white/10 px-2.5 py-1 rounded-md">90 دقيقة تفاعلية</span>
+              </div>
+              <div class="flex items-center gap-3.5 mt-4">
+                <img src="/digital-id-workshop/logo.png" alt="شعار الورشة" class="w-12 h-12 rounded-xl object-contain bg-white/10 p-1 border border-white/20 shrink-0 shadow-md">
+                <div>
+                  <h3 class="text-xl font-bold font-tajawal text-white leading-tight group-hover:text-taibah-cyan transition-colors">
+                    الهوية الرقمية الأكاديمية والحضور البحثي العالمي
+                  </h3>
+                  <div class="text-slate-300 text-xs mt-1 font-mono">
+                    Academic Digital Identity & Global Research Presence
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="flex items-center gap-3.5 mt-4">
-              <img src="/digital-id-workshop/logo.png" alt="شعار الورشة" class="w-12 h-12 rounded-xl object-contain bg-white/10 p-1 border border-white/20 shrink-0 shadow-md">
-              <div>
-                <h3 class="text-xl font-bold font-tajawal text-white leading-tight group-hover:text-taibah-cyan transition-colors">
-                  الهوية الرقمية الأكاديمية والحضور البحثي العالمي
-                </h3>
-                <div class="text-slate-300 text-xs mt-1 font-mono">
-                  Academic Digital Identity & Global Research Presence
+
+            <!-- Card Body -->
+            <div class="p-6 space-y-4">
+              <p class="text-sm text-slate-600 leading-relaxed text-justify">
+                ورشة تدريبية تطبيقية متكاملة مصممة لأعضاء هيئة التدريس والباحثين لبناء حضور رقمي أكاديمي رصين وموثق، ومحاكاة منصات النشر العلمي العالمية، واستثمار الذكاء الاصطناعي المنضبط لتعظيم استشهادات الأبحاث.
+              </p>
+
+              <!-- Feature Tags -->
+              <div class="grid grid-cols-2 gap-2 text-xs text-slate-700 pt-2 border-t border-slate-100">
+                <div class="flex items-center gap-1.5 bg-slate-50 p-2 rounded-lg border border-slate-100">
+                  <span>🤖</span> <span>مختبر Gemini Flash المنضبط</span>
+                </div>
+                <div class="flex items-center gap-1.5 bg-slate-50 p-2 rounded-lg border border-slate-100">
+                  <span>🔬</span> <span>محاكاة ORCID و Scholar</span>
+                </div>
+                <div class="flex items-center gap-1.5 bg-slate-50 p-2 rounded-lg border border-slate-100">
+                  <span>📈</span> <span>حاسبة معامل هيرش h-index</span>
+                </div>
+                <div class="flex items-center gap-1.5 bg-slate-50 p-2 rounded-lg border border-slate-100">
+                  <span>📜</span> <span>خطة عمل وتوصيات فردية</span>
+                </div>
+              </div>
+
+              <!-- Presenter Info Box -->
+              <div class="bg-slate-50 rounded-xl p-3 border border-slate-200/80 flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-taibah-navy text-white flex items-center justify-center font-bold text-sm">
+                  ع
+                </div>
+                <div>
+                  <div class="text-xs font-bold text-slate-900">د. عزت عمر عبدالله أبوعزه</div>
+                  <div class="text-[11px] text-slate-500">أستاذ مساعد بقسم تقنية الأشعة - جامعة طيبة</div>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Card Body -->
-          <div class="p-6 space-y-4">
-            <p class="text-sm text-slate-600 leading-relaxed text-justify">
-              ورشة تدريبية تطبيقية متكاملة مصممة لأعضاء هيئة التدريس والباحثين لبناء حضور رقمي أكاديمي رصين وموثق، ومحاكاة منصات النشر العلمي العالمية، واستثمار الذكاء الاصطناعي المنضبط لتعظيم استشهادات الأبحاث.
+          <!-- Action Buttons -->
+          <div class="p-6 pt-0 space-y-2.5">
+            <a href="/digital-id-workshop" 
+               class="w-full bg-taibah-emerald hover:bg-emerald-600 text-white font-bold py-3.5 px-6 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-emerald-700/20 hover:shadow-xl transition-all transform hover:-translate-y-0.5">
+              <span>دخول الورشة التفاعلية ومختبر التطبيق</span>
+              <svg class="w-5 h-5 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
+            </a>
+
+            <!-- Google Slides Presentation Quick Access Buttons -->
+            <div class="grid grid-cols-2 gap-2">
+              <a href="https://docs.google.com/presentation/d/1NaqXsU4fDvWM8mIoCfR8LMhaYPVnB4Bd/present" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-2.5 px-3 rounded-xl border border-slate-200 flex items-center justify-center gap-1.5 transition shadow-2xs"
+                 title="عرض الشرائح بملء الشاشة">
+                <span>🖥️ عرض الشرائح (40)</span>
+              </a>
+              <a href="https://docs.google.com/presentation/d/1NaqXsU4fDvWM8mIoCfR8LMhaYPVnB4Bd/edit?usp=sharing" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-2.5 px-3 rounded-xl border border-slate-200 flex items-center justify-center gap-1.5 transition shadow-2xs"
+                 title="فتح العرض مباشرة في Google Slides">
+                <span>📑 Google Slides</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Workshop 2: Coming Soon Card -->
+        <div class="bg-slate-100/70 rounded-2xl border-2 border-dashed border-slate-300 p-6 flex flex-col justify-between items-center text-center">
+          <div class="my-auto py-8">
+            <div class="w-16 h-16 mx-auto rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-3xl shadow-sm text-slate-400 mb-4">
+              ⏳
+            </div>
+            <span class="inline-block bg-slate-200 text-slate-700 text-xs font-bold px-3 py-1 rounded-full mb-2">
+              قريباً • Coming Soon
+            </span>
+            <h3 class="text-lg font-bold font-tajawal text-slate-800 mt-2">
+              برامج وورش تدريبية تخصصية إضافية
+            </h3>
+            <p class="text-xs text-slate-500 max-w-sm mx-auto mt-2 leading-relaxed">
+              يجري العمل على إعداد برامج تدريبية قادمة لأعضاء هيئة التدريس والباحثين في مجالات الذكاء الاصطناعي الطبي، ومنهجيات البحث المتقدمة، والنشر في مجلات الربع الأول (Q1).
+            </p>
+          </div>
+
+          <button disabled class="w-full bg-slate-200 text-slate-400 font-semibold py-3 px-6 rounded-xl cursor-not-allowed text-xs">
+            سيتم الإعلان عن الموعد لاحقاً
+          </button>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SECTION 2: CURATED RESEARCH & TEACHING SERVICES -->
+    <!-- ========================================== -->
+    <section id="academic-services" class="space-y-8 pt-4">
+      
+      <!-- Section Header -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-4">
+        <div>
+          <div class="text-xs font-bold text-taibah-emerald uppercase tracking-wider mb-1">دليل الموارد والأدلة المعتمدة</div>
+          <h2 class="text-2xl font-bold font-tajawal text-taibah-navy flex items-center gap-2.5">
+            <span class="p-1.5 bg-taibah-emerald text-white rounded-lg text-lg">🌐</span>
+            <span>خدمات ومراجع البحث العلمي والتدريس الأكاديمي (Curated Academic Services)</span>
+          </h2>
+          <p class="text-sm text-slate-600 mt-1">
+            دليل منتقى ومحدث يجمع أهم المنصات العالمية والوطنية لدعم النشر الرصين، إدارة الهوية الأكاديمية، والارتقاء بالتدريس الجامعي.
+          </p>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-xs bg-slate-200 text-slate-700 px-3 py-1 rounded-full font-bold">
+            20+ خدمة معتمدة
+          </span>
+        </div>
+      </div>
+
+      <!-- ========================================== -->
+      <!-- FIRST FEATURED REPORT (QUESTION & ANSWER BRIEF) -->
+      <!-- ========================================== -->
+      <div id="featured-report" class="bg-gradient-to-r from-slate-900 via-taibah-navy to-taibah-mediumNavy text-white rounded-3xl p-6 sm:p-9 shadow-xl border-2 border-taibah-cyan/30 relative overflow-hidden">
+        
+        <!-- Decorative Background Glow -->
+        <div class="absolute -right-20 -top-20 w-80 h-80 bg-taibah-emerald/15 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -left-20 -bottom-20 w-80 h-80 bg-taibah-cyan/15 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="relative z-10 space-y-6">
+          
+          <!-- Report Header Badges -->
+          <div class="flex flex-wrap items-center justify-between gap-3 border-b border-white/15 pb-4">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="bg-taibah-emerald text-white text-xs font-black px-3.5 py-1 rounded-full shadow-sm flex items-center gap-1.5">
+                <span>📑</span>
+                <span>التقرير الاسترشادي الأول • Research Brief #1</span>
+              </span>
+              <span class="bg-white/10 text-slate-200 text-xs px-3 py-1 rounded-full">
+                دليل تطبيقي معتمد
+              </span>
+              <span class="bg-amber-400/20 text-amber-300 border border-amber-400/30 text-xs px-3 py-1 rounded-full">
+                مكافحة المجلات الوهمية والمقرصنة
+              </span>
+            </div>
+            <div class="text-xs text-slate-400 font-mono">
+              تاريخ النشر: ربيع الأول 1448هـ / سبتمبر 2026م
+            </div>
+          </div>
+
+          <!-- Question Display (Reviewed and Corrected) -->
+          <div class="space-y-3">
+            <div class="text-xs text-taibah-cyan font-bold uppercase tracking-wider flex items-center gap-1.5">
+              <span>🎯</span>
+              <span>السؤال المعالج في التقرير (بعد المراجعة والتدقيق اللغوي والأكاديمي):</span>
+            </div>
+            
+            <h3 class="text-xl sm:text-2xl font-black font-tajawal text-white leading-snug">
+              "ما هي الخدمات الإلكترونية والطرق المختلفة المعتمدة للتحقق من موثوقية وجودة المجلة العلمية المحكّمة وتجنب المجلات الوهمية والمقرصنة؟"
+            </h3>
+
+            <div class="text-xs text-slate-300 font-mono dir-ltr text-left bg-black/25 px-3 py-2 rounded-xl border border-white/10">
+              "What are the online services and different methods that allow researchers to verify the legitimacy of an academic journal?"
+            </div>
+          </div>
+
+          <!-- Report Executive Summary & Highlights -->
+          <div class="bg-white/5 backdrop-blur-md rounded-2xl p-5 border border-white/10 space-y-4 text-xs sm:text-sm leading-relaxed text-slate-200">
+            <p class="text-justify text-slate-300">
+              يوفر هذا الدليل العملي الاسترشادي خارطة طريق متكاملة للباحث الأكاديمي لحماية جهده البحثي وسمعته العلمية من الوقوع في شباك النشر الاستغلالي (Predatory Publishing) أو مواقع المجلات المستنسخة والمقرصنة (Hijacked Journals)، مستنداً إلى أحدث قواعد البيانات العالمية، والأدلة الأخلاقية الدولية.
             </p>
 
-            <!-- Feature Tags -->
-            <div class="grid grid-cols-2 gap-2 text-xs text-slate-700 pt-2 border-t border-slate-100">
-              <div class="flex items-center gap-1.5 bg-slate-50 p-2 rounded-lg border border-slate-100">
-                <span>🤖</span> <span>مختبر Gemini Flash المنضبط</span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs">
+              <div class="flex items-start gap-2 bg-white/5 p-3 rounded-xl border border-white/10">
+                <span class="text-taibah-emerald font-bold text-base">✓</span>
+                <div>
+                  <strong class="text-white">قواعد البيانات المعتمدة:</strong>
+                  <span class="text-slate-300 block mt-0.5">فحص مباشر في Clarivate Master Journal List (Web of Science) و Scopus Preview و DOAJ و NLM Catalog.</span>
+                </div>
               </div>
-              <div class="flex items-center gap-1.5 bg-slate-50 p-2 rounded-lg border border-slate-100">
-                <span>🔬</span> <span>محاكاة ORCID و Scholar</span>
+              <div class="flex items-start gap-2 bg-white/5 p-3 rounded-xl border border-white/10">
+                <span class="text-taibah-emerald font-bold text-base">✓</span>
+                <div>
+                  <strong class="text-white">كاشف المجلات المقرصنة:</strong>
+                  <span class="text-slate-300 block mt-0.5">الربط مع Retraction Watch Hijacked Journal Checker لرصد النطاقات المستولى عليها.</span>
+                </div>
               </div>
-              <div class="flex items-center gap-1.5 bg-slate-50 p-2 rounded-lg border border-slate-100">
-                <span>📈</span> <span>حاسبة معامل هيرش h-index</span>
+              <div class="flex items-start gap-2 bg-white/5 p-3 rounded-xl border border-white/10">
+                <span class="text-taibah-emerald font-bold text-base">✓</span>
+                <div>
+                  <strong class="text-white">مصفوفة كشف المؤشرات الوهمية:</strong>
+                  <span class="text-slate-300 block mt-0.5">التمييز الصارم بين معامل التأثير الحقيقي (JIF) والمعاملات المضللة (GIF, UIF, Cosmos).</span>
+                </div>
               </div>
-              <div class="flex items-center gap-1.5 bg-slate-50 p-2 rounded-lg border border-slate-100">
-                <span>📜</span> <span>خطة عمل وتوصيات فردية</span>
+              <div class="flex items-start gap-2 bg-white/5 p-3 rounded-xl border border-white/10">
+                <span class="text-taibah-emerald font-bold text-base">✓</span>
+                <div>
+                  <strong class="text-white">مقياس التقييم الذاتي التفاعلي:</strong>
+                  <span class="text-slate-300 block mt-0.5">أداة برمجية تفاعلية بداخل الصفحة لحساب نسبة أمان وموثوقية المجلة المستهدفة فورياً.</span>
+                </div>
               </div>
             </div>
+          </div>
 
-            <!-- Presenter Info Box -->
-            <div class="bg-slate-50 rounded-xl p-3 border border-slate-200/80 flex items-center gap-3">
-              <div class="w-10 h-10 rounded-full bg-taibah-navy text-white flex items-center justify-center font-bold text-sm">
+          <!-- Bottom Action Row: Author and CTA Button -->
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
+            <div class="flex items-center gap-3 text-xs text-slate-300">
+              <div class="w-9 h-9 rounded-xl bg-taibah-emerald text-white flex items-center justify-center font-bold text-sm shadow">
                 ع
               </div>
               <div>
-                <div class="text-xs font-bold text-slate-900">د. عزت عمر عبدالله أبوعزه</div>
-                <div class="text-[11px] text-slate-500">أستاذ مساعد بقسم تقنية الأشعة - جامعة طيبة</div>
+                <div class="font-bold text-white">د. عزت عمر عبدالله أبوعزه</div>
+                <div class="text-[11px] text-slate-400">قسم تقنية الأشعة والتصوير الطبي — جامعة طيبة</div>
               </div>
             </div>
-          </div>
-        </div>
 
-        <!-- Action Buttons -->
-        <div class="p-6 pt-0 space-y-2.5">
-          <a href="/digital-id-workshop" 
-             class="w-full bg-taibah-emerald hover:bg-emerald-600 text-white font-bold py-3.5 px-6 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-emerald-700/20 hover:shadow-xl transition-all transform hover:-translate-y-0.5">
-            <span>دخول الورشة التفاعلية ومختبر التطبيق</span>
-            <svg class="w-5 h-5 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-            </svg>
-          </a>
-
-          <!-- Google Slides Presentation Quick Access Buttons -->
-          <div class="grid grid-cols-2 gap-2">
-            <a href="https://docs.google.com/presentation/d/1NaqXsU4fDvWM8mIoCfR8LMhaYPVnB4Bd/present" 
-               target="_blank" 
-               rel="noopener noreferrer"
-               class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-2.5 px-3 rounded-xl border border-slate-200 flex items-center justify-center gap-1.5 transition shadow-2xs"
-               title="عرض الشرائح بملء الشاشة">
-              <span>🖥️ عرض الشرائح (40)</span>
-            </a>
-            <a href="https://docs.google.com/presentation/d/1NaqXsU4fDvWM8mIoCfR8LMhaYPVnB4Bd/edit?usp=sharing" 
-               target="_blank" 
-               rel="noopener noreferrer"
-               class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-2.5 px-3 rounded-xl border border-slate-200 flex items-center justify-center gap-1.5 transition shadow-2xs"
-               title="فتح العرض مباشرة في Google Slides">
-              <span>📑 Google Slides</span>
+            <!-- CTA Link to Dedicated Report HTML Page -->
+            <a href="/reports/journal-legitimacy-guide.html" 
+               class="bg-taibah-emerald hover:bg-emerald-500 text-white font-bold py-3.5 px-7 rounded-xl flex items-center justify-center gap-2.5 shadow-lg shadow-emerald-700/30 hover:shadow-xl transition-all transform hover:-translate-y-0.5 shrink-0 text-sm">
+              <span>قراءة التقرير والدليل التفاعلي الكامل</span>
+              <svg class="w-5 h-5 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
             </a>
           </div>
+
         </div>
       </div>
 
-      <!-- Workshop 2: Coming Soon Card -->
-      <div class="bg-slate-100/70 rounded-2xl border-2 border-dashed border-slate-300 p-6 flex flex-col justify-between items-center text-center">
-        <div class="my-auto py-8">
-          <div class="w-16 h-16 mx-auto rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-3xl shadow-sm text-slate-400 mb-4">
-            ⏳
+      <!-- ========================================== -->
+      <!-- CATEGORIZED DIRECTORY OF SERVICES (4 PILLARS) -->
+      <!-- ========================================== -->
+      <div class="space-y-10 pt-4">
+        
+        <!-- Category 1: Journal Legitimacy & Publishing Verification -->
+        <div class="space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+            <div class="flex items-center gap-2 text-base font-bold font-tajawal text-slate-900">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+              <span>1. خدمات فحص موثوقية المجلات والتحقق من النشر الرصين (Journal Legitimacy & Publishing)</span>
+            </div>
+            <span class="text-xs text-slate-500 font-mono">8 خدمات معتمدة</span>
           </div>
-          <span class="inline-block bg-slate-200 text-slate-700 text-xs font-bold px-3 py-1 rounded-full mb-2">
-            قريباً • Coming Soon
-          </span>
-          <h3 class="text-lg font-bold font-tajawal text-slate-800 mt-2">
-            برامج وورش تدريبية تخصصية إضافية
-          </h3>
-          <p class="text-xs text-slate-500 max-w-sm mx-auto mt-2 leading-relaxed">
-            يجري العمل على إعداد برامج تدريبية قادمة لأعضاء هيئة التدريس والباحثين في مجالات الذكاء الاصطناعي الطبي، ومنهجيات البحث المتقدمة، والنشر في مجلات الربع الأول (Q1).
-          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            
+            <!-- Clarivate MJL -->
+            <a href="https://mjl.clarivate.com/" target="_blank" rel="noopener noreferrer" 
+               class="bg-white p-4 rounded-xl border border-slate-200 hover:border-taibah-emerald hover:shadow-md transition flex flex-col justify-between group">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-xs font-bold text-red-700 bg-red-50 px-2 py-0.5 rounded">Clarivate WoS</span>
+                  <span class="text-slate-400 group-hover:text-taibah-emerald transition text-sm">↗</span>
+                </div>
+                <h4 class="font-bold text-sm text-slate-900 group-hover:text-taibah-emerald transition">Clarivate Master Journal List</h4>
+                <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+                  الفهرس المعتمد للتحقق من تصنيف المجلات في Web of Science ومعامل التأثير الحقيقي (JIF).
+                </p>
+              </div>
+              <div class="text-[11px] text-taibah-emerald font-semibold mt-3 pt-2 border-t border-slate-100">
+                mjl.clarivate.com
+              </div>
+            </a>
+
+            <!-- Scopus Sources -->
+            <a href="https://www.scopus.com/sources" target="_blank" rel="noopener noreferrer" 
+               class="bg-white p-4 rounded-xl border border-slate-200 hover:border-taibah-emerald hover:shadow-md transition flex flex-col justify-between group">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-xs font-bold text-orange-700 bg-orange-50 px-2 py-0.5 rounded">Elsevier Scopus</span>
+                  <span class="text-slate-400 group-hover:text-taibah-emerald transition text-sm">↗</span>
+                </div>
+                <h4 class="font-bold text-sm text-slate-900 group-hover:text-taibah-emerald transition">Scopus Sources & CiteScore</h4>
+                <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+                  الاستعلام المجاني عن أرباع المجلات (Q1-Q4)، وتتبع قائمة المجلات المستبعدة شهرياً.
+                </p>
+              </div>
+              <div class="text-[11px] text-orange-600 font-semibold mt-3 pt-2 border-t border-slate-100">
+                scopus.com/sources
+              </div>
+            </a>
+
+            <!-- DOAJ -->
+            <a href="https://doaj.org/" target="_blank" rel="noopener noreferrer" 
+               class="bg-white p-4 rounded-xl border border-slate-200 hover:border-taibah-emerald hover:shadow-md transition flex flex-col justify-between group">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-xs font-bold text-teal-800 bg-teal-50 px-2 py-0.5 rounded">Open Access</span>
+                  <span class="text-slate-400 group-hover:text-taibah-emerald transition text-sm">↗</span>
+                </div>
+                <h4 class="font-bold text-sm text-slate-900 group-hover:text-taibah-emerald transition">Directory of Open Access Journals</h4>
+                <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+                  المعيار الذهبي لتوثيق المجلات المفتوحة الرصينة، رسوم APC، وتراخيص المشاع الإبداعي.
+                </p>
+              </div>
+              <div class="text-[11px] text-teal-700 font-semibold mt-3 pt-2 border-t border-slate-100">
+                doaj.org
+              </div>
+            </a>
+
+            <!-- NLM Catalog -->
+            <a href="https://www.ncbi.nlm.nih.gov/nlmcatalog" target="_blank" rel="noopener noreferrer" 
+               class="bg-white p-4 rounded-xl border border-slate-200 hover:border-taibah-emerald hover:shadow-md transition flex flex-col justify-between group">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-xs font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">NIH / MEDLINE</span>
+                  <span class="text-slate-400 group-hover:text-taibah-emerald transition text-sm">↗</span>
+                </div>
+                <h4 class="font-bold text-sm text-slate-900 group-hover:text-taibah-emerald transition">NLM Catalog (PubMed / MEDLINE)</h4>
+                <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+                  فهرس المكتبة الوطنية للطب الأمريكية للتحقق من الاعتماد الكامل في MEDLINE للتخصصات الصحية.
+                </p>
+              </div>
+              <div class="text-[11px] text-blue-600 font-semibold mt-3 pt-2 border-t border-slate-100">
+                ncbi.nlm.nih.gov/nlmcatalog
+              </div>
+            </a>
+
+            <!-- Think Check Submit -->
+            <a href="https://thinkchecksubmit.org/" target="_blank" rel="noopener noreferrer" 
+               class="bg-white p-4 rounded-xl border border-slate-200 hover:border-taibah-emerald hover:shadow-md transition flex flex-col justify-between group">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-xs font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded">منهجية الفحص</span>
+                  <span class="text-slate-400 group-hover:text-taibah-emerald transition text-sm">↗</span>
+                </div>
+                <h4 class="font-bold text-sm text-slate-900 group-hover:text-taibah-emerald transition">Think. Check. Submit.</h4>
+                <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+                  منظومة الفحص المنهجي الدولية لتقييم مصداقية المجلة وجهة النشر قبل تسليم البحث.
+                </p>
+              </div>
+              <div class="text-[11px] text-emerald-600 font-semibold mt-3 pt-2 border-t border-slate-100">
+                thinkchecksubmit.org
+              </div>
+            </a>
+
+            <!-- Retraction Watch Hijacked -->
+            <a href="https://retractionwatch.com/the-retraction-watch-hijacked-journal-checker/" target="_blank" rel="noopener noreferrer" 
+               class="bg-white p-4 rounded-xl border border-slate-200 hover:border-red-400 hover:shadow-md transition flex flex-col justify-between group">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-xs font-bold text-red-700 bg-red-50 px-2 py-0.5 rounded">كاشف الاختطاف</span>
+                  <span class="text-slate-400 group-hover:text-red-600 transition text-sm">↗</span>
+                </div>
+                <h4 class="font-bold text-sm text-slate-900 group-hover:text-red-600 transition">Hijacked Journal Checker</h4>
+                <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+                  سجل استقصائي عالمي لكشف المجلات العلمية المستنسخة والمواقع المزيفة المسروقة.
+                </p>
+              </div>
+              <div class="text-[11px] text-red-600 font-semibold mt-3 pt-2 border-t border-slate-100">
+                retractionwatch.com
+              </div>
+            </a>
+
+            <!-- COPE -->
+            <a href="https://publicationethics.org/members" target="_blank" rel="noopener noreferrer" 
+               class="bg-white p-4 rounded-xl border border-slate-200 hover:border-taibah-emerald hover:shadow-md transition flex flex-col justify-between group">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-xs font-bold text-purple-700 bg-purple-50 px-2 py-0.5 rounded">أخلاقيات النشر</span>
+                  <span class="text-slate-400 group-hover:text-taibah-emerald transition text-sm">↗</span>
+                </div>
+                <h4 class="font-bold text-sm text-slate-900 group-hover:text-taibah-emerald transition">COPE Member Directory</h4>
+                <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+                  التحقق من عضوية دور النشر في لجنة أخلاقيات النشر العلمي العالمية (COPE).
+                </p>
+              </div>
+              <div class="text-[11px] text-purple-600 font-semibold mt-3 pt-2 border-t border-slate-100">
+                publicationethics.org
+              </div>
+            </a>
+
+            <!-- ISSN Portal -->
+            <a href="https://portal.issn.org/" target="_blank" rel="noopener noreferrer" 
+               class="bg-white p-4 rounded-xl border border-slate-200 hover:border-taibah-emerald hover:shadow-md transition flex flex-col justify-between group">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-xs font-bold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded">الرقم الدولي</span>
+                  <span class="text-slate-400 group-hover:text-taibah-emerald transition text-sm">↗</span>
+                </div>
+                <h4 class="font-bold text-sm text-slate-900 group-hover:text-taibah-emerald transition">The ISSN International Portal</h4>
+                <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+                  تأكيد مطابقة بيانات المجلة والناشر والدولة المسجلة لدى المركز الدولي للترقيم الموحد.
+                </p>
+              </div>
+              <div class="text-[11px] text-indigo-600 font-semibold mt-3 pt-2 border-t border-slate-100">
+                portal.issn.org
+              </div>
+            </a>
+
+          </div>
         </div>
 
-        <button disabled class="w-full bg-slate-200 text-slate-400 font-semibold py-3 px-6 rounded-xl cursor-not-allowed text-xs">
-          سيتم الإعلان عن الموعد لاحقاً
-        </button>
+        <!-- Category 2: Academic Digital Identity & Researcher Profiles -->
+        <div class="space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+            <div class="flex items-center gap-2 text-base font-bold font-tajawal text-slate-900">
+              <span class="w-2.5 h-2.5 rounded-full bg-taibah-cyan"></span>
+              <span>2. الهوية الرقمية الأكاديمية والملفات البحثية (Academic Digital Identity & Profiles)</span>
+            </div>
+            <span class="text-xs text-slate-500 font-mono">5 منصات أساسية</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            
+            <!-- ORCID -->
+            <a href="https://orcid.org/" target="_blank" rel="noopener noreferrer" 
+               class="bg-white p-4 rounded-xl border border-slate-200 hover:border-taibah-emerald hover:shadow-md transition flex flex-col justify-between group">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-xs font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded">معرف فريد</span>
+                  <span class="text-slate-400 group-hover:text-taibah-emerald transition text-sm">↗</span>
+                </div>
+                <h4 class="font-bold text-sm text-slate-900 group-hover:text-taibah-emerald transition">ORCID iD</h4>
+                <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+                  المعرف الرقمي الدائم والموحد لربط النتاج العلمي وتفادي تشابه الأسماء أكاديمياً.
+                </p>
+              </div>
+              <div class="text-[11px] text-emerald-600 font-semibold mt-3 pt-2 border-t border-slate-100">
+                orcid.org
+              </div>
+            </a>
+
+            <!-- Google Scholar -->
+            <a href="https://scholar.google.com/" target="_blank" rel="noopener noreferrer" 
+               class="bg-white p-4 rounded-xl border border-slate-200 hover:border-taibah-emerald hover:shadow-md transition flex flex-col justify-between group">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-xs font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">الاستشهادات</span>
+                  <span class="text-slate-400 group-hover:text-taibah-emerald transition text-sm">↗</span>
+                </div>
+                <h4 class="font-bold text-sm text-slate-900 group-hover:text-taibah-emerald transition">Google Scholar Profile</h4>
+                <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+                  تتبع الاستشهادات اللحظية، حساب مؤشر h-index و i10-index، وتعزيز الظهور العالمي.
+                </p>
+              </div>
+              <div class="text-[11px] text-blue-600 font-semibold mt-3 pt-2 border-t border-slate-100">
+                scholar.google.com
+              </div>
+            </a>
+
+            <!-- Web of Science ResearcherID -->
+            <a href="https://www.webofscience.com/" target="_blank" rel="noopener noreferrer" 
+               class="bg-white p-4 rounded-xl border border-slate-200 hover:border-taibah-emerald hover:shadow-md transition flex flex-col justify-between group">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-xs font-bold text-red-700 bg-red-50 px-2 py-0.5 rounded">WoS Core</span>
+                  <span class="text-slate-400 group-hover:text-taibah-emerald transition text-sm">↗</span>
+                </div>
+                <h4 class="font-bold text-sm text-slate-900 group-hover:text-taibah-emerald transition">ResearcherID (Clarivate)</h4>
+                <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+                  توثيق أبحاث WoS وسجلات تحكيم الأقران (Peer Review) المعتمدة دولياً.
+                </p>
+              </div>
+              <div class="text-[11px] text-red-600 font-semibold mt-3 pt-2 border-t border-slate-100">
+                webofscience.com
+              </div>
+            </a>
+
+            <!-- Scopus Author Profile -->
+            <a href="https://www.scopus.com/feedback/author/" target="_blank" rel="noopener noreferrer" 
+               class="bg-white p-4 rounded-xl border border-slate-200 hover:border-taibah-emerald hover:shadow-md transition flex flex-col justify-between group">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-xs font-bold text-orange-700 bg-orange-50 px-2 py-0.5 rounded">Scopus ID</span>
+                  <span class="text-slate-400 group-hover:text-taibah-emerald transition text-sm">↗</span>
+                </div>
+                <h4 class="font-bold text-sm text-slate-900 group-hover:text-taibah-emerald transition">Scopus Author Wizard</h4>
+                <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+                  دمج وتصحيح ملفات الباحث في سكوبس وتحديث الانتماء المؤسسي لجامعة طيبة.
+                </p>
+              </div>
+              <div class="text-[11px] text-orange-600 font-semibold mt-3 pt-2 border-t border-slate-100">
+                scopus.com/feedback
+              </div>
+            </a>
+
+            <!-- ResearchGate -->
+            <a href="https://www.researchgate.net/" target="_blank" rel="noopener noreferrer" 
+               class="bg-white p-4 rounded-xl border border-slate-200 hover:border-taibah-emerald hover:shadow-md transition flex flex-col justify-between group">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-xs font-bold text-teal-700 bg-teal-50 px-2 py-0.5 rounded">شبكة مهنية</span>
+                  <span class="text-slate-400 group-hover:text-taibah-emerald transition text-sm">↗</span>
+                </div>
+                <h4 class="font-bold text-sm text-slate-900 group-hover:text-taibah-emerald transition">ResearchGate</h4>
+                <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+                  التواصل الأكاديمي المباشر، مشاركة المسودات ومطبوعات ما قبل النشر (Preprints).
+                </p>
+              </div>
+              <div class="text-[11px] text-teal-600 font-semibold mt-3 pt-2 border-t border-slate-100">
+                researchgate.net
+              </div>
+            </a>
+
+          </div>
+        </div>
+
+        <!-- Category 3: Digital Libraries & Knowledge Bases -->
+        <div class="space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+            <div class="flex items-center gap-2 text-base font-bold font-tajawal text-slate-900">
+              <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
+              <span>3. المكتبات الرقمية ومحركات الاستكشاف المعرفي (Digital Libraries & Discovery)</span>
+            </div>
+            <span class="text-xs text-slate-500 font-mono">4 بوابات بحثية</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            
+            <!-- Saudi Digital Library (SDL) -->
+            <a href="https://sdl.edu.sa/" target="_blank" rel="noopener noreferrer" 
+               class="bg-white p-4 rounded-xl border border-slate-200 hover:border-taibah-emerald hover:shadow-md transition flex flex-col justify-between group">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-xs font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded">المكتبة الوطنية</span>
+                  <span class="text-slate-400 group-hover:text-taibah-emerald transition text-sm">↗</span>
+                </div>
+                <h4 class="font-bold text-sm text-slate-900 group-hover:text-taibah-emerald transition">المكتبة الرقمية السعودية (SDL)</h4>
+                <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+                  بوابة النفاذ الوطنية الموحدة لكبرى أمهات الدوريات والموسوعات العالمية لمنسوبي الجامعات.
+                </p>
+              </div>
+              <div class="text-[11px] text-emerald-600 font-semibold mt-3 pt-2 border-t border-slate-100">
+                sdl.edu.sa
+              </div>
+            </a>
+
+            <!-- PubMed Central (PMC) -->
+            <a href="https://www.ncbi.nlm.nih.gov/pmc/" target="_blank" rel="noopener noreferrer" 
+               class="bg-white p-4 rounded-xl border border-slate-200 hover:border-taibah-emerald hover:shadow-md transition flex flex-col justify-between group">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-xs font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">مستودع مجاني</span>
+                  <span class="text-slate-400 group-hover:text-taibah-emerald transition text-sm">↗</span>
+                </div>
+                <h4 class="font-bold text-sm text-slate-900 group-hover:text-taibah-emerald transition">PubMed Central (PMC)</h4>
+                <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+                  الأرشيف المجاني الكامل للنصوص الطبية والحيوية الصادر عن معاهد الصحة الأمريكية (NIH).
+                </p>
+              </div>
+              <div class="text-[11px] text-blue-600 font-semibold mt-3 pt-2 border-t border-slate-100">
+                ncbi.nlm.nih.gov/pmc
+              </div>
+            </a>
+
+            <!-- Dimensions AI -->
+            <a href="https://app.dimensions.ai/" target="_blank" rel="noopener noreferrer" 
+               class="bg-white p-4 rounded-xl border border-slate-200 hover:border-taibah-emerald hover:shadow-md transition flex flex-col justify-between group">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-xs font-bold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded">ذكاء اصطناعي</span>
+                  <span class="text-slate-400 group-hover:text-taibah-emerald transition text-sm">↗</span>
+                </div>
+                <h4 class="font-bold text-sm text-slate-900 group-hover:text-taibah-emerald transition">Dimensions AI Analytics</h4>
+                <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+                  ربط المنشورات البحثية بالمنح التمويلية وبراءات الاختراع والتجارب السريرية حول العالم.
+                </p>
+              </div>
+              <div class="text-[11px] text-indigo-600 font-semibold mt-3 pt-2 border-t border-slate-100">
+                dimensions.ai
+              </div>
+            </a>
+
+            <!-- Semantic Scholar -->
+            <a href="https://www.semanticscholar.org/" target="_blank" rel="noopener noreferrer" 
+               class="bg-white p-4 rounded-xl border border-slate-200 hover:border-taibah-emerald hover:shadow-md transition flex flex-col justify-between group">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-xs font-bold text-slate-700 bg-slate-100 px-2 py-0.5 rounded">تحليل دلالي</span>
+                  <span class="text-slate-400 group-hover:text-taibah-emerald transition text-sm">↗</span>
+                </div>
+                <h4 class="font-bold text-sm text-slate-900 group-hover:text-taibah-emerald transition">Semantic Scholar</h4>
+                <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+                  محرك معهد ألين للذكاء الاصطناعي لاستخراج خلاصات الأبحاث وتحليل الاستشهادات المؤثرة.
+                </p>
+              </div>
+              <div class="text-[11px] text-slate-600 font-semibold mt-3 pt-2 border-t border-slate-100">
+                semanticscholar.org
+              </div>
+            </a>
+
+          </div>
+        </div>
+
+        <!-- Category 4: University Teaching & Pedagogical Services -->
+        <div class="space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+            <div class="flex items-center gap-2 text-base font-bold font-tajawal text-slate-900">
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+              <span>4. خدمات وأدوات التعليم الجامعي والتدريس الأكاديمي (University Teaching & Pedagogical Services)</span>
+            </div>
+            <span class="text-xs text-slate-500 font-mono">4 منصات تدريس</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            
+            <!-- Blackboard Taibah -->
+            <a href="https://lms.taibahu.edu.sa/" target="_blank" rel="noopener noreferrer" 
+               class="bg-white p-4 rounded-xl border border-slate-200 hover:border-taibah-emerald hover:shadow-md transition flex flex-col justify-between group">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-xs font-bold text-amber-800 bg-amber-50 px-2 py-0.5 rounded">جامعة طيبة</span>
+                  <span class="text-slate-400 group-hover:text-taibah-emerald transition text-sm">↗</span>
+                </div>
+                <h4 class="font-bold text-sm text-slate-900 group-hover:text-taibah-emerald transition">بلاك بورد (Blackboard Learn)</h4>
+                <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+                  نظام إدارة التعلم الإلكتروني المعتمد بجامعة طيبة لإدارة المقررات والتقييمات الرقمية.
+                </p>
+              </div>
+              <div class="text-[11px] text-amber-700 font-semibold mt-3 pt-2 border-t border-slate-100">
+                lms.taibahu.edu.sa
+              </div>
+            </a>
+
+            <!-- Turnitin -->
+            <a href="https://www.turnitin.com/" target="_blank" rel="noopener noreferrer" 
+               class="bg-white p-4 rounded-xl border border-slate-200 hover:border-taibah-emerald hover:shadow-md transition flex flex-col justify-between group">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-xs font-bold text-red-700 bg-red-50 px-2 py-0.5 rounded">النزاهة الأكاديمية</span>
+                  <span class="text-slate-400 group-hover:text-taibah-emerald transition text-sm">↗</span>
+                </div>
+                <h4 class="font-bold text-sm text-slate-900 group-hover:text-taibah-emerald transition">Turnitin Integrity Checker</h4>
+                <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+                  منظومة فحص الأصالة وكشف الاستلال العلمي ورصد نصوص الذكاء الاصطناعي التوليدي.
+                </p>
+              </div>
+              <div class="text-[11px] text-red-600 font-semibold mt-3 pt-2 border-t border-slate-100">
+                turnitin.com
+              </div>
+            </a>
+
+            <!-- SHMS OER -->
+            <a href="https://shms.sa/" target="_blank" rel="noopener noreferrer" 
+               class="bg-white p-4 rounded-xl border border-slate-200 hover:border-taibah-emerald hover:shadow-md transition flex flex-col justify-between group">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-xs font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded">الموارد السعودية</span>
+                  <span class="text-slate-400 group-hover:text-taibah-emerald transition text-sm">↗</span>
+                </div>
+                <h4 class="font-bold text-sm text-slate-900 group-hover:text-taibah-emerald transition">منصة شمس (SHMS OER)</h4>
+                <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+                  الشبكة الوطنية للموارد التعليمية المفتوحة التابعة للمركز الوطني للتعليم الإلكتروني.
+                </p>
+              </div>
+              <div class="text-[11px] text-emerald-600 font-semibold mt-3 pt-2 border-t border-slate-100">
+                shms.sa
+              </div>
+            </a>
+
+            <!-- PhET Simulations -->
+            <a href="https://phet.colorado.edu/" target="_blank" rel="noopener noreferrer" 
+               class="bg-white p-4 rounded-xl border border-slate-200 hover:border-taibah-emerald hover:shadow-md transition flex flex-col justify-between group">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-xs font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">مختبرات تفاعلية</span>
+                  <span class="text-slate-400 group-hover:text-taibah-emerald transition text-sm">↗</span>
+                </div>
+                <h4 class="font-bold text-sm text-slate-900 group-hover:text-taibah-emerald transition">PhET Interactive Simulations</h4>
+                <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+                  محاكيات بصرية تفاعلية قائمة على الأبحاث لتدريس مفاهيم الفيزياء، الكيمياء، والعلوم الحيوية.
+                </p>
+              </div>
+              <div class="text-[11px] text-blue-600 font-semibold mt-3 pt-2 border-t border-slate-100">
+                phet.colorado.edu
+              </div>
+            </a>
+
+          </div>
+        </div>
+
       </div>
 
-    </div>
+    </section>
 
   </main>
 
   <!-- Footer -->
-  <footer class="bg-slate-900 text-slate-400 border-t border-slate-800 py-6 text-center text-xs">
-    <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-      <div>
-        جامعة طيبة — عمادة التطوير والجودة — برنامج التدريب الأكاديمي
+  <footer class="bg-slate-900 text-slate-400 border-t border-slate-800 py-8 text-center text-xs">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="text-right">
+        <div class="text-slate-200 font-bold">جامعة طيبة — عمادة التطوير والجودة</div>
+        <div class="text-slate-400 text-[11px] mt-0.5">منظومة البرامج التدريبية ومراجع البحث والتعليم الجامعي المعتمدة 1448هـ / 2026م</div>
       </div>
-      <div>
-        إعداد وتطوير: <span class="text-slate-200 font-semibold">د. عزت عمر عبدالله أبوعزه</span> © 1448هـ / 2026م
+      <div class="text-left">
+        <div>إعداد وتطوير: <span class="text-taibah-cyan font-semibold">د. عزت عمر عبدالله أبوعزه</span></div>
+        <div class="text-slate-500 text-[11px] mt-0.5">أستاذ مساعد بقسم تقنية الأشعة والتصوير الطبي — جميع الحقوق محفوظة © 2026</div>
       </div>
     </div>
   </footer>

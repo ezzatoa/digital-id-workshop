@@ -419,6 +419,24 @@ app.get(['/slides', '/presentation', '/digital-id-workshop/slides'], (req, res) 
   res.redirect('https://docs.google.com/presentation/d/1NaqXsU4fDvWM8mIoCfR8LMhaYPVnB4Bd/present');
 });
 
+// Academic Reports and Reference Guides
+const reportsPath = path.join(__dirname, 'reports');
+const distReportsPath = path.join(distPath, 'reports');
+
+app.use('/reports', express.static(reportsPath));
+app.use('/reports', express.static(distReportsPath));
+
+// Dedicated route for Journal Legitimacy Guide
+app.get(['/reports/journal-legitimacy-guide', '/reports/journal-legitimacy-guide.html', '/journal-legitimacy-guide', '/journal-legitimacy-guide.html'], (req, res) => {
+  const guidePath = fs.existsSync(path.join(reportsPath, 'journal-legitimacy-guide.html'))
+    ? path.join(reportsPath, 'journal-legitimacy-guide.html')
+    : path.join(distReportsPath, 'journal-legitimacy-guide.html');
+  if (fs.existsSync(guidePath)) {
+    return res.sendFile(guidePath);
+  }
+  res.redirect('/');
+});
+
 // Host Domain Root Route: Portal listing available workshops
 app.get(['/', '/index.html', '/workshops'], (req, res) => {
   if (fs.existsSync(portalPath)) {
